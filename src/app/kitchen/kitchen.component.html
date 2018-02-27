@@ -1,0 +1,21 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="container">
+  <div class="header">
+      <h1 class="header"><span class="fa fa-home"></span> KITCHEN</h1>
+  </div>
+
+  <div class="body">
+        <div class="container">
+                <p>Show all users</p>
+                <ul>
+                <li *ngFor="let user of users | async">
+                     {{ user.name | json }}
+                  </li>
+                </ul>
+              </div>
+  </div> 
+
+  <div class="footer" id="footer">
+
+    </div>
+</div>

@@ -1,0 +1,26 @@
+.item
+{
+    width:45px;
+    text-align: center;
+    border-radius: 25px;
+    border-style: none
+}
+.it
+{
+    padding-top: 12px;
+    padding-left: 15px;
+}
+.br
+{
+    border-radius: 25px;
+}
+select
+{
+    height: 45px;
+}
+
+.operators
+{
+    border:none;
+    background: none;
+}

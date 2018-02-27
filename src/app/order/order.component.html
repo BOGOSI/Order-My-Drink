@@ -1,0 +1,78 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<section class="container" style="width:500px;">
+  <div class="header">
+      <h1 class="header"><span class="fa fa-coffee"></span> COFFEE ORDER</h1>
+  </div>
+  <div class="body">
+    <form action="#" method="POST" name="order" class="form">
+        <!-- user -->
+        <div class="row">
+            <div class="col-md-9">
+              <select name="user" id="user" class="br form-control">
+                <option value="">PERSON</option>
+                <option value="">BOGOSI</option>
+                <option value="">CEASAR</option>
+                <option value="">MOSES</option>
+                <option value="">NICHOLAS</option>
+              </select>
+            </div>
+          </div>
+          <br/>
+
+      <!--Tea -->
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fa fa-coffee"></i>&nbsp;TEA</h1>
+        </div>
+        <div class="col-md-6 it">
+          <button class='operators'><i class="fa fa-minus "></i></button><input type="text" minlength="1" maxlength="2" value="0" placeholder="0" class="item"><button class='operators'><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+
+      <!-- Coffee -->
+      <div class="row">
+          <div class="col-md-6">
+            <h1><i class="fa fa-coffee"></i>&nbsp;COFFEE</h1>
+          </div>
+          <div class="col-md-6 it">
+            <button class='operators'><i class="fa fa-minus"></i></button><input type="text" minlength="1" maxlength="2" value="0" placeholder="0" class="item"><button class='operators'><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+
+        <!-- WATER -->
+        <div class="row">
+            <div class="col-md-6">
+              <h1><i class="fa fa-water"></i>&nbsp;WATER</h1>
+            </div>
+            <div class="col-md-6 it">
+              <button class='operators'><i class="fa fa-minus"></i></button><input type="text" minlength="1" maxlength="2" value="0" placeholder="0" class="br item"><button class='operators'><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+
+            <!-- ROOM -->
+        <div class="row">
+            <div class="col-md-9">
+              <select name="room" id="room" class="br form-control">
+                <option value="">ROOM NAME</option>
+                <option value="">API</option>
+                <option value="">HTML</option>
+                <option value="">C#</option>
+                <option value="">SQL</option>
+                <option value="">DNS</option>
+              </select>
+            </div>
+          </div>
+          <br/>
+
+          <!-- ORDER BTN -->
+          <div class="row">
+              <div class="col-md-9">
+                  <button type="button" class="btn btn-defualt btn-success br form-control"><span class="fa fa-send"></span> ORDER</button></div>
+            </div>
+    </form>
+  </div>
+  <div class="footer" id="footer">
+  </div>
+</section>
+
