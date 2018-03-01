@@ -15,7 +15,7 @@
                     <th>Date</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of orders">
+                    <tr (click)="details(order)" *ngFor="let order of orders ">
                         <td>{{order.name}}</td><td>{{order.item}}<br/>{{order.item2}}<br/>{{order.item3}}</td><td>{{order.quantity + order.quantity2 +order.quantity3 }}</td><td>{{order.date}}</td><td>{{ order.room }}</td><td><span class="fa fa-arrow-left"></span></td>
                     </tr>
                 </tbody>
@@ -23,18 +23,7 @@
         </table>
     </div>
     <div class="col-md-4" style="background-color:aquamarine;border-radius:25px;">
-        <div><h3>Item`s Quantity:</h3></div>
-        <div class="user">
-           
-        </div>
-        <div class="actions">
-            <ul>
-                <li></li>
-            </ul>
-            <button class=" accept"><i class="fa fa-"></i> Accept</button>
-            <button class=" decline"><i class="fa fa-"></i> Decline</button>
-            <button class=" complete"><i class="fa fa-done"></i>Complete</button>
-        </div>
+       <app-order-details [order]="orderToSend"></app-order-details>
     </div>
     <div class="col-md-4">
         <div class="cancel"><button class="btn btn-default btn-danger form-input canceled">CANCELED ORDERS</button></div>
