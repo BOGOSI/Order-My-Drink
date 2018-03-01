@@ -1,6 +1,8 @@
-.p{
-    color:rgb(126, 187, 36);
+.fa-circle,.actions
+{
+    color: rgba(106, 106, 106, 0.68)
 }
-.acc,.com{
-    color:rgb(207, 197, 197);
+ .pending.fa-circle
+{
+    color:rgba(121, 209, 97, 0.728);
 }

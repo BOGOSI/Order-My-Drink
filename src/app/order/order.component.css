@@ -1,26 +1,10 @@
-.item
+.quantity
 {
-    width:45px;
-    text-align: center;
-    border-radius: 25px;
-    border-style: none
+    width: 50px;
+    border:none;
 }
-.it
-{
-    padding-top: 12px;
-    padding-left: 15px;
-}
-.br
-{
-    border-radius: 25px;
-}
-select
-{
-    height: 45px;
-}
-
-.operators
+.operator
 {
     border:none;
-    background: none;
+    background-color:white;
 }

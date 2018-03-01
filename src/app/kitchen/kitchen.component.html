@@ -1,21 +1,40 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="container">
-  <div class="header">
-      <h1 class="header"><span class="fa fa-home"></span> KITCHEN</h1>
-  </div>
+    <div class="header">
+         <h1> <span class="fa fa-coffee"></span> COFFEE ORDER</h1>
+    </div>
 
-  <div class="body">
-        <div class="container">
-                <p>Show all users</p>
-                <ul>
-                <li *ngFor="let user of users | async">
-                     {{ user.name | json }}
-                  </li>
-                </ul>
-              </div>
-  </div> 
-
-  <div class="footer" id="footer">
-
+    <div class="row">
+       <div class="col-md-5">
+        <table class="table ">
+            <tr>
+                <thead>
+                    <th>Order By:</th>
+                    <th>Item(s)</th>
+                    <th>Item(s)</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders">
+                        <td>{{order.name}}</td><td>{{order.item}}</td><td>{{order.quantity}}</td><td>{{order.date}}</td><td><span class="fa fa-arrow-left"></span></td>
+                    </tr>
+                </tbody>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-4" style="background-color:aquamarine;border-radius:25px;">
+        <div><h3>Item`s Quantity:</h3></div>
+        <div class="user">
+           
+        </div>
+        <div class="actions">
+            <button class=" accept"><i class="fa fa-"></i> Accept</button>
+            <button class=" decline"><i class="fa fa-"></i> Decline</button>
+            <button class=" complete"><i class="fa fa-done"></i>Complete</button>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="cancel"><button class="btn btn-default btn-danger form-input canceled">CANCELED ORDERS</button></div>
+        <br/>
+        <div class="new"><button class="btn btn-default btn-success form-input canceled">NEW ORDERS</button></div>
+    </div>
     </div>
 </div>

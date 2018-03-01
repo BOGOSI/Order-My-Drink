@@ -1,23 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
-
-
-import { AngularFireModule} from 'angularfire2';
-import { AngularFireDatabase,AngularFireObject,AngularFireList} from 'angularfire2/database';
-
-
-import * as firebase from 'firebase/app';
-
 import { AppComponent } from './app.component';
-import { OrderComponent } from './order/order.component';
-import { KitchenComponent } from './kitchen/kitchen.component';
-import { StatusComponent } from './status/status.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { RouterModule, Routes }from '@angular/router';
+import { AppRoutingModule } from '../app/app-routing.module';
 
+import { environment } from '../environments/environment';
+
+import { OrderComponent } from '../app/order/order.component';
+import { KitchenComponent } from '../app/kitchen/kitchen.component';
+import { StatusComponent } from '../app/status/status.component';
+
+import { OrderService } from '../app/services/order.service';
+import { KitchenService } from './services/kitchen.service';
+import { StatusService } from './services/status.service';
 
 @NgModule({
   declarations: [
@@ -27,19 +25,14 @@ import { StatusComponent } from './status/status.component';
     StatusComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    AngularFireDatabase
-    firebase,
-    ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    AngularFireModule.initializeApp(environment.firebase, 'coffeeisorder'),
+    AngularFirestoreModule,
+    AppRoutingModule,
+    AngularFireStorageModule
   ],
-  providers: [],
+  providers: [OrderService,KitchenService,StatusService],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
- }
+export class AppModule { }

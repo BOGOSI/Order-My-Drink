@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireModule, AngularFireDatabase, FirebaseListObservable} from 'angularfire';
-import * as firebase from 'firebase/app';
-
+import { KitchenService} from '../services/kitchen.service';
+import { order} from '../models/order';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'kitchen',
+  selector: 'app-kitchen',
   templateUrl: './kitchen.component.html',
   styleUrls: ['./kitchen.component.css']
 })
 export class KitchenComponent implements OnInit {
+  orders : order[];
 
-  users:FirebaseListObservable<any>;;
-    constructor(db2: AngularFireDatabase) {
-    this.users = db2.list('users');
-          }
+  constructor(private orderservice:KitchenService) { }
 
   ngOnInit() {
+   this.orderservice.getOrders().subscribe(orders =>{
+    console.log(orders);
+    this.orders = orders;
+  });
   }
 
 }
