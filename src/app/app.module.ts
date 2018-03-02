@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
@@ -17,9 +18,10 @@ import { KitchenComponent } from '../app/kitchen/kitchen.component';
 import { StatusComponent } from '../app/status/status.component';
 import { OrderDetailsComponent } from '../app/orderdetails/order-details.componet';
 
-// import { OrderService } from '../app/services/order.service';
+import { OrderService } from '../app/services/order.service';
 import { KitchenService } from './services/kitchen.service';
 import { StatusService } from './services/status.service';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { StatusService } from './services/status.service';
     OrderDetailsComponent
   ],
   imports: [
+    HttpModule,
     RouterModule,
     BrowserModule,
     FormsModule,
@@ -39,7 +42,7 @@ import { StatusService } from './services/status.service';
     AngularFireDatabaseModule,
     AngularFireStorageModule
   ],
-  providers: [KitchenService,StatusService],
+  providers: [KitchenService,StatusService,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

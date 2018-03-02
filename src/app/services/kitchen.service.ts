@@ -8,8 +8,8 @@ export class KitchenService {
   ordersCollection: AngularFirestoreCollection<order>;
 
   Order:Observable<order[]>;
-  
-  constructor(public orders:AngularFirestore) {
+
+  constructor(public orders:AngularFirestore,public users:AngularFirestore) {
     this.Order = this.orders.collection('orders').valueChanges();
    }
 
@@ -17,7 +17,7 @@ export class KitchenService {
     return this.Order;
   }
 
-  
+
 
 }
 

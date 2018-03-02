@@ -4,7 +4,7 @@
     </div>
 
     <div class="row">
-       <div class="col-md-5">
+       <div class="col-md-6">
         <table class="table ">
             <tr>
                 <thead>
@@ -16,19 +16,14 @@
                 </thead>
                 <tbody>
                     <tr (click)="details(order)" *ngFor="let order of orders ">
-                        <td>{{order.name}}</td><td>{{order.item}}<br/>{{order.item2}}<br/>{{order.item3}}</td><td>{{order.quantity + order.quantity2 +order.quantity3 }}</td><td>{{order.date}}</td><td>{{ order.room }}</td><td><span class="fa fa-arrow-left"></span></td>
+                        <td>{{order.name}}</td><td>{{order.item}}<br/>{{order.item2}}<br/>{{order.item3}}</td><td>{{order.quantity + order.quantity2 +order.quantity3 }}</td><td>{{order.date}}</td><td>{{ order.room }}</td><td></td>
                     </tr>
                 </tbody>
             </tr>
         </table>
     </div>
-    <div class="col-md-4" style="background-color:aquamarine;border-radius:25px;">
+    <div class="col-md-6">
        <app-order-details [order]="orderToSend"></app-order-details>
-    </div>
-    <div class="col-md-4">
-        <div class="cancel"><button class="btn btn-default btn-danger form-input canceled">CANCELED ORDERS</button></div>
-        <br/>
-        <div class="new"><button class="btn btn-default btn-success form-input canceled">NEW ORDERS</button></div>
     </div>
     </div>
 </div>

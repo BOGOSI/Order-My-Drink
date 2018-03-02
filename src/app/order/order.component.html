@@ -2,27 +2,32 @@
     <div class="header">
         <h1> <span class="fa fa-coffee"></span> COFFEE ORDER</h1>
    </div>
-   <div class="body">
+   <div class="body" ng-app="orders" ng-controller="orderController">
      <form  class="myOrder" >
-      <div class="form-group">
-          <select id="disabledSelect" class="form-control">
+      <div class="form-group" name="ORDER">
+          <select #user class="form-control">
             <option value="">PERSON</option>
-            <option value="">Bogosi Mokobi</option>
-            <option value="">Ceaser</option>
-            <option value="">Moses</option>
-            <option value="">Nicholas</option>
+            <option *ngFor="let user of users">{{user.name}}</option>
           </select>
         </div>
         <div class="form-group">
-          <h1><span class="fa fa-coffee"></span>&nbsp;TEA <button class="operator minus"><span class="fa fa-minus"></span></button>&nbsp;<input type="text" class="quantity" value="{{teaq}}" maxlength="2" />&nbsp;<button class="operator plus"><span class="fa fa-plus"></span></button></h1>
+          <h1><span class="fa fa-coffee"></span>&nbsp;TEA <button (click)="decreaseT($event)" class="operator minus"><span class="fa fa-minus"></span></button>&nbsp;<input type="text" #q class="quantity" value="{{teaq}}" maxlength="2" />&nbsp;<button (click)="increaseT($event)"  class="operator plus"><span class="fa fa-plus"></span></button></h1>
         </div>
         <div class="form-group">
-            <h1><span class="fa fa-coffee"></span>&nbsp;COFFEE <button class="operator minus"><span class="fa fa-minus"></span></button>&nbsp;<input type="text" class="quantity" value="{{coffeeq}}" maxlength="2"/>&nbsp;<button class="operator plus"><span class="fa fa-plus"></span></button></h1>
+            <h1><span class="fa fa-coffee"></span>&nbsp;COFFEE <button (click)="decreaseC($event)" class="operator minus"><span class="fa fa-minus"></span></button>&nbsp;<input type="text" #q2  class="quantity" value="{{coffeeq}}" maxlength="2"/>&nbsp;<button (click)="increaseC($event)"  class="operator plus"><span class="fa fa-plus"></span></button></h1>
           </div>
           <div class="form-group">
-              <h1><span class="fa fa-coffee"></span>&nbsp;WATER <button class="operator minus"><span class="fa fa-minus"></span></button>&nbsp;<input type="text" class="quantity" value="{{waterq}}" maxlength="2" />&nbsp;<button class="operator plus"><span class="fa fa-plus"></span></button></h1>
+              <h1><span class="fa fa-coffee"></span>&nbsp;WATER <button (click)="decreaseW($event)" class="operator minus"><span class="fa fa-minus"></span></button>&nbsp;<input type="text" #q3  class="quantity" value="{{waterq}}" maxlength="2" />&nbsp;<button (click)="increaseW($event)"  class="operator plus"><span class="fa fa-plus"></span></button></h1>
             </div>
 
+            <select #room class="form-control">
+              <option value="">ROOM NAME</option>
+              <option *ngFor="let Room of rooms" value="{{Room.room}}">{{Room.room}}</option>
+            </select>
+            <br/>
+            <div class="form-group">
+              <button (click)="MakeOrder(user.value,q.value,q2.value,q3.value,room.value)" class="btn btn-success btn-default btn-primary">MAKE ORDER</button>
+            </div>
   </form>
    </div>
    <div class="footer" align="center">

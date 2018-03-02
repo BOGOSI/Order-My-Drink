@@ -11,4 +11,5 @@ export interface order{
     quantity2?:number;
     quantity3?:number;
     room?:string;
+    status?:string;
   }

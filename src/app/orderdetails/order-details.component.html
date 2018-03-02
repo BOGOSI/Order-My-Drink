@@ -1,12 +1,50 @@
-<div><h3>Item`s Quantity:</h3></div>
-<div class="user">
-   
-</div>
 <div class="actions">
-    <ul>
-        <li>{{ order?.name }}</li>
-    </ul>
-    <button class=" accept"><i class="fa fa-"></i> Accept</button>
-    <button class=" decline"><i class="fa fa-"></i> Decline</button>
-    <button class=" complete"><i class="fa fa-done"></i>Complete</button>
+
+    <table>
+        <thead>ORDER DETAILS:</thead>
+        <tbody>
+            <tr><td><span class="fa fa-user"></span> {{ order?.name }}</td><td><span class="fa fa-home"></span> {{ order?.room }}</td></tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <th>Drinks:<th>
+            <th>Quantity</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1. {{ order?.item }} :</td><td class="q">&nbsp;&nbsp;{{ order?.quantity }} </td>
+            </tr>
+            <tr>
+                <td>2. {{ order?.item2 }} :</td><td class="q">&nbsp;&nbsp;{{ order?.quantity2 }}</td>
+            </tr>
+            <tr>
+                <td>3. {{ order?.item3 }} :</td><td class="q">&nbsp;&nbsp;{{ order?.quantity3 }}</td> <br/>
+            </tr>
+            <tr><td>Total Quantity: </td><td>&nbsp;&nbsp;{{order?.quantity+order?.quantity2+order?.quantity3}}</td></tr>
+        </tbody>
+    </table>
+    {{ order?.id }}
+        <table>
+            <thead>
+                <th></th>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><button (click)="setStatus(order?.id)" class=" accept"><i class="fa fa-"></i> Accept</button></td>
+                    <td><button class=" decline"><i class="fa fa-"></i> Decline</button></td>
+                    <td><button class=" complete"><i class="fa fa-done"></i>Complete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+
+        
+       
+    
+    
+    
 </div>
