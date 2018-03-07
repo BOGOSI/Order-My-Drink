@@ -5,21 +5,20 @@ import { Order} from '../models/order';
 import { Observable} from 'rxjs/observable';
 
 @Component({
-    selector: 'app-order-details',
-    templateUrl: './order-details.component.html',
-    styleUrls: ['./order-details.component.css']
+    selector: 'app-acceptedorders',
+    templateUrl: './acceptedorders.component.html',
+    styleUrls: ['./acceptedorders.component.css']
 })
-export class OrderDetailsComponent implements OnInit {
+export class AcceptedOrdersComponent implements OnInit {
     @Input()
 
     Order: AngularFirestoreCollection<Order> ;
     orders: any;
     constructor(private af: AngularFirestore ) {
-
     }
 
     ngOnInit() {
-      this.Order = this.af.collection('orders');
+      this.Order = this.af.collection('orders', ref => ref.where('status', '==', 'Accepted'));
       this.orders = this.Order.snapshotChanges()
       .map(actions => {
         return actions.map(a => {

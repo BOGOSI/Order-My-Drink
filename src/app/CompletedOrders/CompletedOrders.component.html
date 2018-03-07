@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Completed orders.</h1>
+      <ul *ngFor="let order of orders | async">
+          <li>
+            <strong>{{ order.data.name}}</strong>
+            <br>
+            {{order.data.item}}<br />
+        </ul>
+  </div>

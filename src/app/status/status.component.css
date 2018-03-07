@@ -6,3 +6,22 @@
 {
     color:rgba(121, 209, 97, 0.728);
 }
+
+.status {
+  color: rgb(218, 212, 212);
+}
+#loading {
+  text-align: center;
+  width:200px;
+  height: 200px;
+  border:20px solid #ccc;
+  border-top-color: #91c9e1c6;
+  border-radius: 100%;
+
+  animation: round 2s  ease-in-out infinite;
+}
+
+@keyframes round{
+  from{transform: rotate(0deg)}
+  to{ transform: rotate(360deg)};
+}

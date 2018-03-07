@@ -1,13 +1,17 @@
-<div class="container" >
+<div class="container" align="center">
   <div class="header">
     <h1> <span class="fa fa-coffee"></span> COFFEE ORDER</h1>
   </div>
-  <div class="body"  align="center">
-    <div class="pending actions"><h1><span class="pending fa fa-circle"></span>&nbsp;&nbsp;&nbsp;PENDING</h1></div>
-    <div class="accepted actions"><h1><span class="fa fa-circle"></span>&nbsp;&nbsp;&nbsp;ACCEPTED</h1></div>
-    <div class="complete actions"><h1><span class="fa fa-circle"></span>&nbsp;&nbsp;&nbsp;COMPLETE</h1></div>
+  <div class="body"  onload="hideLoader()">
+    <div class="status">
+      <h1 *ngIf="!status">your order is {{statusValue}}...</h1>
+      <br />
+      <button *ngIf="statusValue =='Completed' " (click)="done()">Recieved</button>
+      <br>
+      <br/>
+      <button [routerLink]="['/order']" *ngIf="statusValue =='Completed'">main menu</button>
+    </div>
   </div>
-
   <div class="footer" align="center">
     <p id="footer">All Rights Reserved.</p>
   </div>

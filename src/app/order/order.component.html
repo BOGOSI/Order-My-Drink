@@ -6,8 +6,7 @@
      <form  class="myOrder" >
       <div class="form-group" name="ORDER">
           <select #user class="form-control">
-            <option value="">PERSON</option>
-            <option *ngFor="let user of users">{{user.name}}</option>
+            <option *ngFor="let user of users | async">{{user.data.name}}</option>
           </select>
         </div>
         <div class="form-group">
@@ -21,12 +20,11 @@
             </div>
 
             <select #room class="form-control">
-              <option value="">ROOM NAME</option>
-              <option *ngFor="let Room of rooms" value="{{Room.room}}">{{Room.room}}</option>
+              <option *ngFor="let room of rooms | async" value="{{room.data.room}}">{{room.data.room}}</option>
             </select>
             <br/>
             <div class="form-group">
-              <button (click)="MakeOrder(user.value,q.value,q2.value,q3.value,room.value)" class="btn btn-success btn-default btn-primary">MAKE ORDER</button>
+              <button [routerLink]="['/status']" (click)="MakeOrder(user.value,q.value,q2.value,q3.value,room.value)" class="btn btn-success btn-default btn-primary">MAKE ORDER</button>
             </div>
   </form>
    </div>

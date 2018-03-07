@@ -4,7 +4,22 @@
     <br>
     {{order.data.item}}<br />
 <button (click)="AcceptOrder(order.id)">Accept Order</button>
-<button (click)="AcceptOrder(order.id)">Decline Order</button>
-<button (click)="AcceptOrder(order.id)">Complete Order</button>
+<button (click)="DeclinedOrder(order.id)">Decline Order</button>
+<button (click)="CompleteOrder(order.id)">Complete Order</button>
   </li>
 </ul>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="orders">
+
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div  class="actions">
+        <a [routerLink]="['/acceptedorders']" class="btn btn-primary btn-success">Accepted Orders</a> <br>
+        <br><a [routerLink]="['/completedorders']" class="btn btn-primary btn-success">Completed Orders</a> <br>
+        <br><a [routerLink]="['/declinedorders']" class="btn btn-primary btn-success">Declined Orders</a> <br>
+    </div>
+    </div>
+  </div>
+

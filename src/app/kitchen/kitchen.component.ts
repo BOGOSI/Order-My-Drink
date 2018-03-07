@@ -31,11 +31,13 @@ export class KitchenComponent implements OnInit {
           return { id, data };
         });
       });
+      this.getOrder(this.orders);
   }
 
   getOrder(OrderId) {
-    this.OrderDoc = this.afs.doc('posts/' + OrderId);
+    this.OrderDoc = this.afs.doc('orders/' + OrderId);
     this.order = this.OrderDoc.valueChanges();
+    console.log(OrderId);
   }
 
   AcceptOrder(OrderId) {

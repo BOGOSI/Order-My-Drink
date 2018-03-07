@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
 import { User} from '../models/user';
 import { Order} from '../models/order';
 import { Room } from '../models/room';
+
 import { RouterModule } from '@angular/router';
-import { OrderService } from '../services/order.service';
+import { StatusService } from '../services/status.service';
+
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Observable} from 'rxjs/observable';
 import 'rxjs/add/operator/map';
@@ -16,35 +19,55 @@ import 'rxjs/add/operator/map';
 })
 
 export class OrderComponent implements OnInit {
+  @Input() user;
+
   teaq = 0;
   coffeeq = 0;
   waterq = 0;
 
-  Order: Observable<Order[]>;
+  date = new Date() ;
 
-  users: User[];
-  rooms: Room[];
-  date: Date;
+  userCol: AngularFirestoreCollection<User>;
+  users: Observable<any>;
+  roomCol: AngularFirestoreCollection<Room>;
+  rooms: Observable<any>;
 
-  constructor(private orderservice: OrderService, public orders: AngularFirestore) {
-    this.Order = this.orders.collection('orders').valueChanges();
-    this.date = new Date();
+  constructor( public af: AngularFirestore, public st: StatusService) {
+
   }
 
   ngOnInit() {
-
-    this.orderservice.getUsers().subscribe(Users => { this.users = Users; });
-
-    this.orderservice.getRooms().subscribe(Rooms => {this.rooms = Rooms; });
-
-    console.log(`rooms`, this.rooms, this.date);
-
+    this.userCol = this.af.collection('users');
+    this.roomCol = this.af.collection('rooms');
+    this.getUser();
+    this.getRoom();
   }
 
+  getUser() {
+    this.users = this.userCol.snapshotChanges()
+      .map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Order;
+          const id = a.payload.doc.id;
+          return { id, data };
+        });
+      });
+  }
 
-  MakeOrder( user: String, q: number, q2: number, q3: number, room: String, date: Date) {
+  getRoom() {
+    this.rooms = this.roomCol.snapshotChanges()
+      .map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Order;
+          const id = a.payload.doc.id;
+          return { id, data };
+        });
+      });
+ }
 
-    this.orders.collection('orders').add(
+  MakeOrder( user: String, q: number, q2: number, q3: number, room: String ) {
+
+    this.af.collection('orders').add(
       {
         'name': user,
         'room': room,
@@ -57,7 +80,7 @@ export class OrderComponent implements OnInit {
         'status': 'Pending',
         'date': this.date
         });
-    console.log(user, 'Ordered: ', q, q2, q3, room , ' in room: ', 'Date: ', this.date);
+        this.st.getOrder(status);
   }
 
   decreaseT(event) {this.teaq = this.teaq - 1; }
@@ -69,9 +92,5 @@ export class OrderComponent implements OnInit {
 
   decreaseW(event) {this.waterq = this.waterq - 1; }
   increaseW(event) {this.waterq = this.waterq + 1; }
-
-
-
-
 
 }
