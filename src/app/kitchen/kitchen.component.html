@@ -1,29 +1,10 @@
-<div class="container">
-    <div class="header">
-         <h1> <span class="fa fa-coffee"></span> COFFEE ORDER</h1>
-    </div>
-
-    <div class="row">
-       <div class="col-md-6">
-        <table class="table ">
-            <tr>
-                <thead>
-                    <th>Order By:</th>
-                    <th>Item(s)</th>
-                    <th>Quantity</th>
-                    <th>Room</th>
-                    <th>Date</th>
-                </thead>
-                <tbody>
-                    <tr (click)="details(order)" *ngFor="let order of orders ">
-                        <td>{{order.name}}</td><td>{{order.item}}<br/>{{order.item2}}<br/>{{order.item3}}</td><td>{{order.quantity + order.quantity2 +order.quantity3 }}</td><td>{{order.date}}</td><td>{{ order.room }}</td><td></td>
-                    </tr>
-                </tbody>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-       <app-order-details [order]="orderToSend"></app-order-details>
-    </div>
-    </div>
-</div>
+<ul *ngFor="let order of orders | async">
+  <li (click)="getOrder(order.id)">
+    <strong>{{ order.data.name}}</strong>
+    <br>
+    {{order.data.item}}<br />
+<button (click)="AcceptOrder(order.id)">Accept Order</button>
+<button (click)="AcceptOrder(order.id)">Decline Order</button>
+<button (click)="AcceptOrder(order.id)">Complete Order</button>
+  </li>
+</ul>

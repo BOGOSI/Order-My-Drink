@@ -1,4 +1,4 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { KitchenComponent } from '../app/kitchen/kitchen.component';
@@ -7,7 +7,7 @@ import { StatusComponent } from '../app/status/status.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo:'order',pathMatch:'full' },
+  { path: '', redirectTo: 'order', pathMatch: 'full' },
   { path: 'kitchen', component: KitchenComponent },
   { path: 'order', component: OrderComponent },
   { path: 'status', component: StatusComponent }

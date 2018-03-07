@@ -8,7 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { RouterModule, Routes }from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from '../app/app-routing.module';
 
 import { environment } from '../environments/environment';
@@ -42,7 +42,7 @@ import { StatusService } from './services/status.service';
     AngularFireDatabaseModule,
     AngularFireStorageModule
   ],
-  providers: [KitchenService,StatusService,OrderService],
+  providers: [KitchenService, StatusService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
