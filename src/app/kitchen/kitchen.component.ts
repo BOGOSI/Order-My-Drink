@@ -21,7 +21,7 @@ export class KitchenComponent implements OnInit {
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit() {
-    this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Pending'));
+    this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Pending').limit(5));
 
     this.orders = this.orderCol.snapshotChanges()
       .map(actions => {

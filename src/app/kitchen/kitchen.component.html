@@ -1,25 +1,49 @@
-<ul *ngFor="let order of orders | async">
-  <li (click)="getOrder(order.id)">
-    <strong>{{ order.data.name}}</strong>
-    <br>
-    {{order.data.item}}<br />
-<button (click)="AcceptOrder(order.id)">Accept Order</button>
-<button (click)="DeclinedOrder(order.id)">Decline Order</button>
-<button (click)="CompleteOrder(order.id)">Complete Order</button>
-  </li>
-</ul>
-  <div class="row">
-    <div class="col-md-5">
-      <div class="orders">
+<div class="container">
+<h1 class="header">COFFEE DRINKS</h1>
+<br>
+<div class="alert alert-dark" role="alert">
+ <h1>ORDERS:
 
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button [routerLink]="['/acceptedorders']" type="button" class="btn btn-success">Accepted Orders</button>
+        <button [routerLink]="['/completedorders']" type="button" class="btn btn-warning">Completed Orders</button>
+        <button [routerLink]="['/declinedorders']" type="button" class="btn btn-danger">Declined Orders</button>
+      </div>
+    </h1>
+</div>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="order" *ngFor="let order of orders | async">
+      <th scope="row"></th>
+      <td>{{ order.data.name}}</td>
+      <td>{{ order.data.quantity + order.data.quantity1}}</td>
+      <td>{{ order.data.date}}</td>
+    </tr>
+  </tbody>
+</table>
+
+  <!--<div class="row">
+    <div class="col-md-6">
+      <div class="orders">
+        <ul *ngFor="let order of orders | async">
+          <li (click)="getOrder(order.id)">
+        <button (click)="AcceptOrder(order.id)">Accept Order</button>
+        <button (click)="DeclinedOrder(order.id)">Decline Order</button>
+        <button (click)="CompleteOrder(order.id)">Complete Order</button>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="col-md-6">
-      <div  class="actions">
-        <a [routerLink]="['/acceptedorders']" class="btn btn-primary btn-success">Accepted Orders</a> <br>
-        <br><a [routerLink]="['/completedorders']" class="btn btn-primary btn-success">Completed Orders</a> <br>
-        <br><a [routerLink]="['/declinedorders']" class="btn btn-primary btn-success">Declined Orders</a> <br>
-    </div>
-    </div>
-  </div>
+  </div> -->
+
+
+</div>
 
