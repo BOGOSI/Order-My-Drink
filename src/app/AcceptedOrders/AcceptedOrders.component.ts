@@ -18,7 +18,7 @@ export class AcceptedOrdersComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.Order = this.af.collection('orders', ref => ref.where('status', '==', 'Accepted'));
+      this.Order = this.af.collection('orders', ref => ref.where('status', '==', 'Accepted').limit(10));
       this.orders = this.Order.snapshotChanges()
       .map(actions => {
         return actions.map(a => {

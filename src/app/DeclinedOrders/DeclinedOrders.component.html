@@ -1,9 +1,33 @@
 <div class="container">
-    <h1>Declined orders.</h1>
-      <ul *ngFor="let order of orders | async">
-          <li>
-            <strong>{{ order.data.name}}</strong>
-            <br>
-            {{order.data.item}}<br />
-        </ul>
+    <h1 class="header">COFFEE DRINKS</h1>
+    <br>
+    <div class="alert alert-dark" role="alert">
+     <h1>DECLINED ORDERS:
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button [routerLink]="['/acceptedorders']" type="button" class="btn btn-success">Accepted Orders</button>
+            <button [routerLink]="['/completedorders']" type="button" class="btn btn-warning">Completed Orders</button>
+            <button [routerLink]="['/declinedorders']" type="button" class="btn btn-danger">Declined Orders</button>
+          </div>
+        </h1>
+      </div>
+
+    <table class="table table-hover">
+        <thead class="thead-light">
+          <tr >
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Items</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | async">
+            <th scope="row"></th>
+            <td>{{ order.data.name}}</td>
+            <td>{{ order.data.item}}</td>
+            <td>{{ order.data.date}}</td>
+          </tr>
+        </tbody>
+      </table>
   </div>

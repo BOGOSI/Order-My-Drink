@@ -13,17 +13,20 @@ import 'rxjs/add/operator/map';
 export class KitchenComponent implements OnInit {
 
   orderCol: AngularFirestoreCollection<Order>;
-  orders: Observable<any>;
+  orders: any;
 
   OrderDoc: AngularFirestoreDocument<Order>;
-  order: Observable<Order>;
+  OrderDetails: Observable<Order>;
+  date: Date;
+
 
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit() {
-    this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Pending').limit(5));
 
-    this.orders = this.orderCol.snapshotChanges()
+  this.date = new Date();
+    this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Pending').orderBy('date').limit(10));
+    this.orders =  this.orderCol.snapshotChanges()
       .map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data() as Order;
@@ -31,13 +34,14 @@ export class KitchenComponent implements OnInit {
           return { id, data };
         });
       });
-      this.getOrder(this.orders);
+
   }
 
   getOrder(OrderId) {
+
     this.OrderDoc = this.afs.doc('orders/' + OrderId);
-    this.order = this.OrderDoc.valueChanges();
-    console.log(OrderId);
+    this.OrderDetails = this.OrderDoc.valueChanges();
+    console.log(this.OrderDetails);
   }
 
   AcceptOrder(OrderId) {
@@ -48,11 +52,13 @@ export class KitchenComponent implements OnInit {
   CompleteOrder(OrderId) {
     this.afs.doc('orders/' + OrderId).update({'status': 'Complete'});
     console.log(OrderId, ' Status Updated');
+
   }
 
   DeclinedOrder(OrderId) {
     this.afs.doc('orders/' + OrderId).update({'status': 'Declined'});
     console.log(OrderId, ' Status Updated');
+
   }
 
 }

@@ -6,6 +6,7 @@ import { OrderComponent } from '../order/order.component';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { Observable} from 'rxjs/observable';
 import 'rxjs/add/operator/map';
+import { KitchenComponent } from '../kitchen/kitchen.component';
 
 @Component({
   selector: 'app-status',
@@ -15,15 +16,11 @@ import 'rxjs/add/operator/map';
 export class StatusComponent implements OnInit {
     status: boolean;
     statusValue: string;
+
   constructor(public af: AngularFirestore) { }
 
   ngOnInit() {
       this.status = false;
-      this.statusValue = 'Pending';
-    }
-
-    done() {
-      this.statusValue = 'Completed';
-    }
+  }
 
 }

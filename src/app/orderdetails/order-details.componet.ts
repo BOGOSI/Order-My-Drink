@@ -10,24 +10,13 @@ import { Observable} from 'rxjs/observable';
     styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
-    @Input()
 
-    Order: AngularFirestoreCollection<Order> ;
-    orders: any;
-    constructor(private af: AngularFirestore ) {
+    constructor( ) {
 
     }
 
     ngOnInit() {
-      this.Order = this.af.collection('orders');
-      this.orders = this.Order.snapshotChanges()
-      .map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data() as Order;
-          const id = a.payload.doc.id;
-          return { id, data };
-        });
-      });
+
      }
 
   }

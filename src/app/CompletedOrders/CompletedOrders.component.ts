@@ -21,7 +21,7 @@ export class CompletedOrdersComponent implements OnInit {
   constructor(private afs: AngularFirestore) { }
 
   ngOnInit() {
-    this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Complete'));
+    this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Complete').limit(10));
 
     this.orders = this.orderCol.snapshotChanges()
       .map(actions => {

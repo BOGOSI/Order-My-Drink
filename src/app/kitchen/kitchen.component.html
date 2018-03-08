@@ -11,39 +11,49 @@
       </div>
     </h1>
 </div>
-<table class="table">
-  <thead class="thead-light">
+
+<div class="row">
+  <div class="col-md-5">
+    <table class="active table table-hover">
+  <thead class="thead-light ">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Quantity</th>
+      <th scope="col">Room</th>
       <th scope="col">Date</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="order" *ngFor="let order of orders | async">
+    <tr (click)="getOrder(order.id)" class="order" *ngFor="let order of orders | async">
       <th scope="row"></th>
       <td>{{ order.data.name}}</td>
-      <td>{{ order.data.quantity + order.data.quantity1}}</td>
+      <td>{{ order.data.room}}</td>
       <td>{{ order.data.date}}</td>
     </tr>
-  </tbody>
-</table>
-
-  <!--<div class="row">
-    <div class="col-md-6">
-      <div class="orders">
-        <ul *ngFor="let order of orders | async">
-          <li (click)="getOrder(order.id)">
-        <button (click)="AcceptOrder(order.id)">Accept Order</button>
-        <button (click)="DeclinedOrder(order.id)">Decline Order</button>
-        <button (click)="CompleteOrder(order.id)">Complete Order</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
-
+    </tbody>
+  </table>
+  </div>
+  <div class="col-md-7">
+   <div class="order">
+    <table class="active table">
+      <thead class="">
+        <tr>
+          <th scope="col">ORDER DETAILS:</th>
+          <th scope="col">&nbsp;&nbsp;</th>
+        </tr>
+      </thead>
+        <tbody *ngIf="OrderDetails">
+        <tr class="order" >
+          <th scope="row">
+            {{ (OrderDetails | async)?.name }}
+          </th>
+          <td><button (click)="AcceptOrder(order.id)">Accept Order</button>&nbsp;<button (click)="CompleteOrder(order.id)">Complete Order</button>&nbsp;<button (click)="DeclinedOrder(order.id)">Decline Order</button></td>
+        </tr>
+        </tbody>
+      </table>
+   </div>
+  </div>
+</div>
 
 </div>
 
