@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 import { Order } from '../models/order';
 import { OrderComponent } from '../order/order.component';
@@ -15,13 +17,28 @@ import { StatusService } from '../services/status.service';
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
-    status: string;
-    orderId: any;
 
-  constructor(public stats: StatusService) { }
+  orderCol: AngularFirestoreDocument<Order>;
+  orderId: any;
+  orderStatus: Observable<Order>;
+
+  constructor(public afs: AngularFirestore, private route: ActivatedRoute) {
+   }
 
   ngOnInit() {
-    this.status = this.stats.status;
+
+    this.route.params.subscribe(paramas => {
+      this.orderId = paramas['orderId'];
+      this.getOrderStatus();
+    });
+  }
+
+  getOrderStatus() {
+    // Retrieve order status by Id: this.orderId
+    this.orderCol = this.afs.doc('orders/' + this.orderId);
+    this.orderStatus =  this.orderCol.valueChanges();
+    // Assign the order status to orderStatus
+    console.log(this.orderStatus);
   }
 
 }

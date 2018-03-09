@@ -18,6 +18,8 @@ export class KitchenComponent implements OnInit {
 
   OrderDoc: AngularFirestoreDocument<Order>;
   OrderDetails: Observable<Order>;
+  OrderStatus: Observable<Order>;
+
   date: Date;
   OrderID: string;
 
@@ -45,17 +47,17 @@ export class KitchenComponent implements OnInit {
 
   AcceptOrder(this, OrderID) {
     this.afs.doc('orders/' + OrderID).update({'status': 'Accepted'});
-    this.Sservice.Accepted();
+    this.OrderStatus = this.OrderDetails;
+    this.OrderDetails = '';
   }
 
   CompleteOrder(this, OrderID) {
     this.afs.doc('orders/' + OrderID).update({'status': 'Completed'});
-    this.Sservice.Completed();
+    this.OrderStatus = '';
   }
 
   DeclinedOrder(this, OrderID) {
-    this.afs.doc('orders/' + OrderID).update({'status': 'Declined'});
-    this.Sservice.Declined();
+   this.afs.doc('orders/' + OrderID).update({'status': 'Declined'});
   }
 
 }

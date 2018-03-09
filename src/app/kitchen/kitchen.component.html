@@ -60,10 +60,23 @@
           </th>
           <td>
             <button (click)="AcceptOrder(OrderID)">Accept Order</button><br/>
-            <br/><button (click)="CompleteOrder(OrderID)">Complete Order</button><br/>
             <br/><button (click)="DeclinedOrder(OrderID)">Decline Order</button></td>
         </tr>
         </tbody>
+        <tbody *ngIf="OrderStatus">
+          <tr class="order" >
+            <th scope="row">
+              {{ (OrderDetails | async)?.name }} <br/>
+              Room:&nbsp;{{ (OrderStatus | async)?.room }}<br/>
+              Tea:&nbsp;{{ (OrderStatus | async)?.quantity }}<br/>
+              Coffee:&nbsp;{{ (OrderStatus | async)?.quantity2}}<br/>
+              Water:&nbsp;{{ (OrderStatus | async)?.quantity3 }}<br/>
+              Date:&nbsp;{{ (OrderStatus| async)?.date| date: "medium" }}<br/>
+            </th>
+            <td>
+              <br/><button (click)="CompleteOrder(OrderID)">Complete Order</button><br/>
+          </tr>
+          </tbody>
       </table>
    </div>
   </div>

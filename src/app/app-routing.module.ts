@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'order', pathMatch: 'full' },
   { path: 'kitchen', component: KitchenComponent },
   { path: 'order', component: OrderComponent },
-  { path: 'status', component: StatusComponent },
+  { path: 'status/:orderId', component: StatusComponent },
   { path: 'acceptedorders', component: AcceptedOrdersComponent },
   { path: 'completedorders', component: CompletedOrdersComponent },
   { path: 'declinedorders', component: DeclinedOrdersComponent }

@@ -4,7 +4,7 @@
   </div>
   <div class="body"  onload="hideLoader()">
     <div class="status">
-      <h1>your order is {{ status }} ...</h1>
+      <h1>your order is <span *ngIf="orderStatus">{{ ( orderStatus | async)?.status }}</span> ...</h1>
       <br />
       <br/>
       <button [routerLink]="['/order']" *ngIf="status =='Completed'">main menu</button>
@@ -14,4 +14,3 @@
     <p id="footer">All Rights Reserved.</p>
   </div>
 </div>
-

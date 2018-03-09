@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User} from '../models/user';
 import { Order} from '../models/order';
@@ -32,7 +33,7 @@ export class OrderComponent implements OnInit {
   roomCol: AngularFirestoreCollection<Room>;
   rooms: Observable<any>;
 
-  constructor( public af: AngularFirestore, public st: StatusService) {
+  constructor( public af: AngularFirestore, public st: StatusService, private route: Router) {
 
   }
 
@@ -79,6 +80,8 @@ export class OrderComponent implements OnInit {
         'quantity3': q3,
         'status': 'Pending',
         'date': this.date
+        }).then(docRef => {
+          this.route.navigate(['/status', docRef.id]);
         });
   }
 

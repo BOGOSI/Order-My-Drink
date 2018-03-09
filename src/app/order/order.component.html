@@ -24,7 +24,7 @@
             </select>
             <br/>
             <div class="form-group">
-              <button [disabled]=" q.value <= 0 || q.value > 5 || q2.value < 0 || q2.value > 5 || q3.value < 0 || q3.value > 5" [routerLink]="['/status']" (click)="MakeOrder(user.value,q.value,q2.value,q3.value,room.value)" class="btn btn-success btn-default btn-primary">MAKE ORDER</button>
+              <button [disabled]=" q.value <= 0 || q.value > 5 || q2.value < 0 || q2.value > 5 || q3.value < 0 || q3.value > 5" (click)="MakeOrder(user.value,q.value,q2.value,q3.value,room.value)" class="btn btn-success btn-default btn-primary">MAKE ORDER</button>
             </div>
   </form>
    </div>
