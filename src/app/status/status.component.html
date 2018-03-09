@@ -7,7 +7,7 @@
       <h1>your order is <span *ngIf="orderStatus">{{ ( orderStatus | async)?.status }}</span> ...</h1>
       <br />
       <br/>
-      <button [routerLink]="['/order']" *ngIf="status =='Completed'">main menu</button>
+      <button [routerLink]="['/order']" *ngIf="( orderStatus | async)?.status =='Completed'">main menu</button>
     </div>
   </div>
   <div class="footer" align="center">
