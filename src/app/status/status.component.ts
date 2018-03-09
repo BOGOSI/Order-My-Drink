@@ -14,13 +14,12 @@ import { KitchenComponent } from '../kitchen/kitchen.component';
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
-    status: boolean;
-    statusValue: string;
+    status: string;
 
   constructor(public af: AngularFirestore) { }
 
   ngOnInit() {
-      this.status = false;
+      this.status = 'Pending';
   }
 
 }

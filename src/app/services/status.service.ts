@@ -26,6 +26,5 @@ export class StatusService {
           return { id, data };
         });
       });
-      console.log('User is ', this.orders);
   }
 }
