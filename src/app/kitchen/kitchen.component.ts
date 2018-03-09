@@ -4,7 +4,7 @@ import { Order} from '../models/order';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { KitchenService } from '../services/kitchen.service';
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'app-kitchen',
@@ -21,7 +21,7 @@ export class KitchenComponent implements OnInit {
   date: Date;
   OrderID: string;
 
-  constructor(private afs: AngularFirestore, public Kservice: KitchenService) { }
+  constructor(private afs: AngularFirestore, public Sservice: StatusService) { }
 
   ngOnInit() {
   this.date = new Date();
@@ -44,18 +44,18 @@ export class KitchenComponent implements OnInit {
   }
 
   AcceptOrder(this, OrderID) {
-    this.afs.doc('orders/' + OrderID).update({'status': 'Accepted'});
-    console.log('Accept', OrderID);
+    // this.afs.doc('orders/' + OrderID).update({'status': 'Accepted'});
+    this.Sservice.Accepted();
   }
 
   CompleteOrder(this, OrderID) {
-    this.afs.doc('orders/' + OrderID).update({'status': 'Complete'});
-    console.log('Complete', OrderID);
+    this.afs.doc('orders/' + OrderID).update({'status': 'Completed'});
+    this.Sservice.Completed();
   }
 
   DeclinedOrder(this, OrderID) {
     this.afs.doc('orders/' + OrderID).update({'status': 'Declined'});
-    console.log('Decline', OrderID);
+    this.Sservice.Declined();
   }
 
 }

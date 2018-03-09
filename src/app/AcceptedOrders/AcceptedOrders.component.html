@@ -26,7 +26,7 @@
             <th scope="row"></th>
             <td>{{ order.data.name}}</td>
             <td>{{ order.data.item}}</td>
-            <td>{{ order.data.date}}</td>
+            <td>{{ order.data.date | date: "medium" }}</td>
           </tr>
         </tbody>
       </table>

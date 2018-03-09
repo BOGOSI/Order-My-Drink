@@ -1,30 +1,25 @@
 import { Injectable } from '@angular/core';
 
-import { Order } from '../models/order';
+import { StatusComponent } from '../status/status.component';
 
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import { Observable} from 'rxjs/observable';
-import 'rxjs/add/operator/map';
-
+import {  } from '../status/status.component';
 @Injectable()
 export class StatusService {
 
-  orderCol: AngularFirestoreCollection<Order>;
-  orders: Observable<any>;
-  date: Date;
-  user: string;
+  status: string;
 
-  constructor(public af: AngularFirestore) { }
+  constructor() {  }
 
-  getOrder(user) {
-    this.orderCol = this.af.collection('orders');
-    this.orders = this.orderCol.snapshotChanges()
-      .map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data() as Order;
-          const id = a.payload.doc.id;
-          return { id, data };
-        });
-      });
+  Accepted() {
+   return this.status = 'Accepted';
   }
+
+  Completed() {
+   return this.status = 'Completed';
+  }
+
+  Declined() {
+    return this.status = 'Declined';
+  }
+
 }

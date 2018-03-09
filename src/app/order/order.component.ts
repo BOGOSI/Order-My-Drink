@@ -80,7 +80,6 @@ export class OrderComponent implements OnInit {
         'status': 'Pending',
         'date': this.date
         });
-        this.st.getOrder(status);
   }
 
   decreaseT(event) {this.teaq = this.teaq - 1; }

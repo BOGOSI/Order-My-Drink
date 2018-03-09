@@ -7,6 +7,7 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 import { Observable} from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import { KitchenComponent } from '../kitchen/kitchen.component';
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'app-status',
@@ -15,11 +16,12 @@ import { KitchenComponent } from '../kitchen/kitchen.component';
 })
 export class StatusComponent implements OnInit {
     status: string;
+    orderId: any;
 
-  constructor(public af: AngularFirestore) { }
+  constructor(public stats: StatusService) { }
 
   ngOnInit() {
-      this.status = 'Pending';
+    this.status = this.stats.status;
   }
 
 }

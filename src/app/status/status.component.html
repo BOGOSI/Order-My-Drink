@@ -4,12 +4,10 @@
   </div>
   <div class="body"  onload="hideLoader()">
     <div class="status">
-      <h1 *ngIf="!status">your order is {{statusValue}}...</h1>
+      <h1>your order is {{ status }} ...</h1>
       <br />
-      <button *ngIf="statusValue =='Completed' " (click)="done()">Recieved</button>
-      <br>
       <br/>
-      <button [routerLink]="['/order']" *ngIf="statusValue =='Completed'">main menu</button>
+      <button [routerLink]="['/order']" *ngIf="status =='Completed'">main menu</button>
     </div>
   </div>
   <div class="footer" align="center">
