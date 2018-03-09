@@ -44,7 +44,7 @@ export class KitchenComponent implements OnInit {
   }
 
   AcceptOrder(this, OrderID) {
-    // this.afs.doc('orders/' + OrderID).update({'status': 'Accepted'});
+    this.afs.doc('orders/' + OrderID).update({'status': 'Accepted'});
     this.Sservice.Accepted();
   }
 
