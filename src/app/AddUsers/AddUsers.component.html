@@ -1,0 +1,44 @@
+<div class="container">
+    <h1 class="header"><span class="fa fa-coffee"></span> COFFEE DRINKS</h1>
+    <br>
+  <div>
+    <h1>Add New Employee:</h1>
+  </div>
+  <form class="form-horizontal" >
+
+    <div class="form-group">
+      <div class="col-sm-12">
+        <label class="control-label">Employee</label>
+        <input type="text" id="user" #name name="name" class="form-control">
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <label class="control-label">Email</label>
+        <input type="email" id="email" #email name="email" class="form-control">
+      </div>
+    </div>
+
+    <button type="submit" (click)="AddUser(name.value,email.value)" class="btn btn-primary" [disabled]="">
+      Add User
+    </button>
+
+  </form>
+  <br/>
+  <h1>Add New Room:</h1>
+  <form  class="form-horizontal" >
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label class="control-label">Room / Office</label>
+          <input type="text" id="user" #room name="room" class="form-control">
+
+        </div>
+      </div>
+      <button [disabled]="" type="submit" (click)="AddRoom(room.value)" class="btn btn-primary">
+        Add Room
+      </button>
+
+    </form>
+</div>
+

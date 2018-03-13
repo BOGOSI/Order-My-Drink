@@ -44,6 +44,11 @@ export class OrderComponent implements OnInit {
     this.getRoom();
   }
 
+  UserMail(user: string, email: string) {
+    email = user + '@is.com';
+    console.log(email);
+  }
+
   getUser() {
     this.users = this.userCol.snapshotChanges()
       .map(actions => {
@@ -53,6 +58,10 @@ export class OrderComponent implements OnInit {
           return { id, data };
         });
       });
+  }
+
+  UserId() {
+    console.log('Hi');
   }
 
   getRoom() {

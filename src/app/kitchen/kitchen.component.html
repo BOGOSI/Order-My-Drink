@@ -1,13 +1,13 @@
 <div class="container">
-<h1 class="header">COFFEE DRINKS</h1>
+<h1 class="header"><span class="fa fa-coffee"></span> COFFEE DRINKS</h1>
 <br>
 <div class="alert alert-dark" role="alert">
  <h1>ORDERS:
 
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button [routerLink]="['/acceptedorders']" type="button" class="btn btn-success">Accepted Orders</button>
         <button [routerLink]="['/completedorders']" type="button" class="btn btn-warning">Completed Orders</button>
         <button [routerLink]="['/declinedorders']" type="button" class="btn btn-danger">Declined Orders</button>
+        <button [routerLink]="['/kitchen']" type="button" class="btn btn-dark">New Orders</button>
       </div>
     </h1>
 </div>

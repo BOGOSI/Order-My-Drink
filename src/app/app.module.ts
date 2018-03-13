@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { OrderComponent } from '../app/order/order.component';
 import { KitchenComponent } from '../app/kitchen/kitchen.component';
 import { StatusComponent } from '../app/status/status.component';
+import { AddUsersComponent } from '../app/AddUsers/AddUsers.component';
 import { AcceptedOrdersComponent } from '../app/AcceptedOrders/AcceptedOrders.component';
 import { CompletedOrdersComponent } from '../app/CompletedOrders/CompletedOrders.component';
 import { DeclinedOrdersComponent } from '../app/DeclinedOrders/DeclinedOrders.component';
@@ -31,6 +32,7 @@ import { StatusService } from './services/status.service';
     OrderComponent,
     KitchenComponent,
     StatusComponent,
+    AddUsersComponent,
     AcceptedOrdersComponent,
     CompletedOrdersComponent,
     DeclinedOrdersComponent,
