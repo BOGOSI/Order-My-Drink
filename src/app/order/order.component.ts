@@ -9,14 +9,14 @@ import { RouterModule } from '@angular/router';
 import { StatusService } from '../services/status.service';
 
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import { Observable} from 'rxjs/observable';
+import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
 @Component({
   selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css'],
+  templateUrl: './Order.component.html',
+  styleUrls: ['./Order.component.css'],
 })
 
 export class OrderComponent implements OnInit {

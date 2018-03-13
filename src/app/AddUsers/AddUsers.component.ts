@@ -3,8 +3,8 @@ import { User } from '../models/user';
 import { AngularFirestore } from 'angularfire2/firestore' ;
 @Component({
   selector: 'app-addusers',
-  templateUrl: './addusers.component.html',
-  styleUrls: ['./addusers.component.css']
+  templateUrl: './AddUsers.component.html',
+  styleUrls: ['./AddUsers.component.css']
 })
 export class AddUsersComponent implements OnInit {
 

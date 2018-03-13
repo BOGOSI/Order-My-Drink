@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-completedorders',
-  templateUrl: './completedorders.component.html',
-  styleUrls: ['./completedorders.component.css']
+  templateUrl: './CompletedOrders.component.html',
+  styleUrls: ['./CompletedOrders.component.css']
 })
 export class CompletedOrdersComponent implements OnInit {
 

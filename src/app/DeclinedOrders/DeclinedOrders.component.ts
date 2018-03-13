@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-declinedorders',
-  templateUrl: './declinedorders.component.html',
-  styleUrls: ['./declinedorders.component.css']
+  templateUrl: './DeclinedOrders.component.html',
+  styleUrls: ['./DeclinedOrders.component.css']
 })
 export class DeclinedOrdersComponent implements OnInit {
 

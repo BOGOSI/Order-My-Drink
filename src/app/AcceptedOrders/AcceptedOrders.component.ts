@@ -6,8 +6,8 @@ import { Observable} from 'rxjs/observable';
 
 @Component({
     selector: 'app-acceptedorders',
-    templateUrl: './acceptedorders.component.html',
-    styleUrls: ['./acceptedorders.component.css']
+    templateUrl: './AcceptedOrders.component.html',
+    styleUrls: ['./AcceptedOrders.component.css']
 })
 export class AcceptedOrdersComponent implements OnInit {
     @Input()
