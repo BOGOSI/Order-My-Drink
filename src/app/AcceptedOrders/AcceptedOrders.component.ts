@@ -2,7 +2,7 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Order} from '../models/order';
-import { Observable} from 'rxjs/observable';
+import { Observable} from 'rxjs/Observable';
 
 @Component({
     selector: 'app-acceptedorders',
@@ -18,7 +18,7 @@ export class AcceptedOrdersComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.Order = this.af.collection('orders', ref => ref.where('status', '==', 'Accepted').limit(10));
+      this.Order = this.af.collection('orders', ref => ref.where('status', '==', 'Accepted').limit(15));
       this.orders = this.Order.snapshotChanges()
       .map(actions => {
         return actions.map(a => {
