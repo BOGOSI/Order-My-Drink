@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Order} from '../models/order';
-import { Observable} from 'rxjs/observable';
+import { Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class KitchenService {
