@@ -14,10 +14,10 @@
 
 <div class="row">
   <div class="col-md-5">
-    <table class="active table table-hover">
+    <table [hidden]="OrderDetails || OrderStatus" class="active table table-hover">
   <thead class="thead-light ">
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">His #</th>
       <th scope="col">Name</th>
       <th scope="col">Room</th>
       <th scope="col">Date</th>
@@ -29,13 +29,48 @@
       <td>{{ order.data.name}}</td>
       <td>{{ order.data.room}}</td>
       <td>{{ order.data.date | date: "medium"}}<br/>
-        <ng-template *ngIf="OrderDetails">
-
-        </ng-template>
         </td>
     </tr>
     </tbody>
   </table>
+
+  <table [hidden]="OrderStatus" *ngIf="OrderDetails" class="active table">
+    <thead class="thead-light ">
+      <tr>
+        <th scope="col"># 2</th>
+        <th scope="col">Name</th>
+        <th scope="col">Room</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="order" *ngFor="let order of orders | async">
+        <th scope="row"></th>
+        <td>{{ order.data.name}}</td>
+        <td>{{ order.data.room}}</td>
+        <td>{{ order.data.date | date: "medium"}}<br/></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table *ngIf="OrderStatus" class="active table">
+        <thead class="thead-light ">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Room</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="order" *ngFor="let order of orders | async">
+            <th scope="row"></th>
+            <td>{{ order.data.name}}</td>
+            <td>{{ order.data.room}}</td>
+            <td>{{ order.data.date | date: "medium"}}<br/></td>
+          </tr>
+          </tbody>
+        </table>
   </div>
   <div class="col-md-7">
    <div class="order">
@@ -51,7 +86,7 @@
           <th scope="row">
             {{ (OrderDetails | async)?.name }} <br/>
             Room:&nbsp;{{ (OrderDetails | async)?.room }}<br/>
-            Tea:&nbsp;{{ (OrderDetails | async)?.quantiy }}<br/>
+            Tea:&nbsp; {{ (OrderDetails | async)?.quantiy }}<br/>
             Coffee:&nbsp;{{ (OrderDetails | async)?.quantity2}}<br/>
             Water:&nbsp;{{ (OrderDetails | async)?.quantity3 }}<br/>
             Date:&nbsp;{{ (OrderDetails | async)?.date| date: "medium" }}<br/>

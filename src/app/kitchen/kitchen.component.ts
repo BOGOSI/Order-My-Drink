@@ -20,14 +20,19 @@ export class KitchenComponent implements OnInit {
   OrderDetails: Observable<Order>;
   OrderStatus: Observable<Order>;
 
-  date: Date;
+
   OrderID: string;
 
   constructor(private afs: AngularFirestore, public Sservice: StatusService) { }
 
   ngOnInit() {
-  this.date = new Date();
-    this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Pending').orderBy('date').limit(10));
+
+    this.getOrders();
+
+  }
+
+  getOrders() {
+        this.orderCol = this.afs.collection('orders' , ref => ref.where('status', '==', 'Pending').orderBy('date').limit(10));
     this.orders =  this.orderCol.snapshotChanges()
       .map(actions => {
         return actions.map(a => {
@@ -36,16 +41,17 @@ export class KitchenComponent implements OnInit {
           return { id, data };
         });
       });
-
   }
 
   getOrder(OrderId) {
+    this.getOrders();
     this.OrderDoc = this.afs.doc('orders/' + OrderId);
     this.OrderDetails = this.OrderDoc.valueChanges();
     this.OrderID = OrderId;
   }
 
   AcceptOrder(this, OrderID) {
+    this.getOrders();
     this.afs.doc('orders/' + OrderID).update({'status': 'Accepted'});
     this.OrderStatus = this.OrderDetails;
     this.OrderDetails = '';
@@ -58,6 +64,7 @@ export class KitchenComponent implements OnInit {
 
   DeclinedOrder(this, OrderID) {
    this.afs.doc('orders/' + OrderID).update({'status': 'Declined'});
+   this.OrderDetails = '';
   }
 
 }
