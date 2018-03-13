@@ -24,7 +24,6 @@
   </thead>
   <tbody>
     <tr (click)="getOrder(order.id)" class="order" *ngFor="let order of orders | async">
-      <th scope="row"></th>
       <td>{{ order.data.name}}</td>
       <td>{{ order.data.room}}</td>
       <td>{{ order.data.date | date: "medium"}}<br/>
@@ -43,7 +42,6 @@
     </thead>
     <tbody>
       <tr class="order" *ngFor="let order of orders | async">
-        <th scope="row"></th>
         <td>{{ order.data.name}}</td>
         <td>{{ order.data.room}}</td>
         <td>{{ order.data.date | date: "medium"}}<br/></td>
@@ -61,7 +59,6 @@
         </thead>
         <tbody>
           <tr class="order" *ngFor="let order of orders | async">
-            <th scope="row"></th>
             <td>{{ order.data.name}}</td>
             <td>{{ order.data.room}}</td>
             <td>{{ order.data.date | date: "medium"}}<br/></td>
