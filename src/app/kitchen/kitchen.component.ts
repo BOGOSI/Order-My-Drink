@@ -8,8 +8,8 @@ import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'app-kitchen',
-  templateUrl: './Kitchen.component.html',
-  styleUrls: ['./Kitchen.component.css']
+  templateUrl: './kitchen.component.html',
+  styleUrls: ['./kitchen.component.css']
 })
 export class KitchenComponent implements OnInit {
 
