@@ -68,6 +68,7 @@
   </div>
   <div class="col-md-7">
    <div class="order">
+
     <table class="active table">
       <thead class="">
         <tr>
@@ -78,24 +79,24 @@
         <tbody *ngIf="OrderDetails">
         <tr class="order" >
           <th scope="row">
-            {{ (OrderDetails | async)?.name }} <br/>
+
+            Name: &nbsp;{{ (OrderDetails | async)?.name }} <br/>
             Room:&nbsp;{{ (OrderDetails | async)?.room }}<br/>
-            Tea:&nbsp; {{ (OrderDetails | async)?.quantiy }}<br/>
-            Coffee:&nbsp;{{ (OrderDetails | async)?.quantity2}}<br/>
+            Tea:&nbsp;{{ (OrderDetails | async)?.quantity }}<br/>
+            Coffee:&nbsp;{{ (OrderDetails | async)?.quantity2 }}<br/>
             Water:&nbsp;{{ (OrderDetails | async)?.quantity3 }}<br/>
             Date:&nbsp;{{ (OrderDetails | async)?.date| date: "medium" }}<br/>
-            {{ (OrderDetails?.id) }}<br/>
-
           </th>
           <td>
             <button (click)="AcceptOrder(OrderID)">Accept Order</button><br/>
             <br/><button (click)="DeclinedOrder(OrderID)">Decline Order</button></td>
         </tr>
         </tbody>
+        
         <tbody *ngIf="OrderStatus">
           <tr class="order" >
             <th scope="row">
-              {{ (OrderDetails | async)?.name }} <br/>
+              Name: &nbsp;{{ (OrderDetails | async)?.name }} <br/>
               Room:&nbsp;{{ (OrderStatus | async)?.room }}<br/>
               Tea:&nbsp;{{ (OrderStatus | async)?.quantity }}<br/>
               Coffee:&nbsp;{{ (OrderStatus | async)?.quantity2}}<br/>
