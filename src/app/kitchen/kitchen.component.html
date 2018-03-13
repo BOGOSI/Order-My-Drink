@@ -88,11 +88,11 @@
             Date:&nbsp;{{ (OrderDetails | async)?.date| date: "medium" }}<br/>
           </th>
           <td>
-            <button (click)="AcceptOrder(OrderID)">Accept Order</button><br/>
-            <br/><button (click)="DeclinedOrder(OrderID)">Decline Order</button></td>
+            <button (click)="AcceptOrder(OrderID)" class="btn btn-success">Accept Order</button><br/>
+            <br/><button (click)="DeclinedOrder(OrderID)" class="btn btn-danger">Decline Order</button></td>
         </tr>
         </tbody>
-        
+
         <tbody *ngIf="OrderStatus">
           <tr class="order" >
             <th scope="row">

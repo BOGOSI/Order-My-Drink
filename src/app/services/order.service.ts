@@ -4,7 +4,7 @@ import { User } from '../models/user';
 import { Room } from '../models/room';
 import { Order } from '../models/order';
 
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 
 
 
