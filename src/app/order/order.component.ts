@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validator } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { User } from '../models/user';
@@ -113,10 +113,20 @@ export class OrderComponent implements OnInit {
     //     });
   }
 
-  decreaseT(event) { this.teaq = this.teaq - 1; }
+  decreaseT(event) {
+    this.teaq = this.teaq - 1;
+    const control = this.orderForm.controls.q as FormControl;
+    this.orderForm.patchValue({
+      q: this.teaq
+    });
+  }
 
   increaseT(event) {
     this.teaq = this.teaq + 1;
+    const control = this.orderForm.controls.q as FormControl;
+    this.orderForm.patchValue({
+      q: this.teaq
+    });
   }
 
   decreaseC(event) { this.coffeeq = this.coffeeq - 1; }
