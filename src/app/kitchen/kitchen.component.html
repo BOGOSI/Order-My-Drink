@@ -2,12 +2,20 @@
 <h1 class="header"><span class="fa fa-coffee"></span> COFFEE DRINKS</h1>
 <br>
 <div class="alert alert-dark" role="alert">
- <h1>ORDERS:
-
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button [routerLink]="['/completedorders']" type="button" class="btn btn-warning">Completed Orders</button>
-        <button [routerLink]="['/declinedorders']" type="button" class="btn btn-danger">Declined Orders</button>
-        <button [routerLink]="['/kitchen']" type="button" class="btn btn-dark">New Orders</button>
+ <h1>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" [routerLink]="['/completedorders']" id="option1" autocomplete="off" checked> Completed Orders
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" [routerLink]="['/declinedorders']" id="option2" autocomplete="off"> Declined Orders
+        </label>
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options"  [routerLink]="['/kitchen']" id="option3" autocomplete="off"> New Orders
+        </label>
+        <label class="btn btn-secondary ">
+            <input type="radio" name="options"  [routerLink]="['/addusers']" id="option3" autocomplete="off"> New Users
+          </label>
       </div>
     </h1>
 </div>

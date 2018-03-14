@@ -1,0 +1,18 @@
+
+.disabled
+{
+  background-color: darkcyan;
+  border-radius: 7px;
+  color: white;
+}
+
+.nav-link
+{
+  color: white;
+}
+ .nav-link:hover
+ {
+  background-color: darkcyan;
+  border-radius: 7px;
+  color: white;
+ }

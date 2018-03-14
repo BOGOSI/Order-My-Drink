@@ -1,3 +1,8 @@
 .form-control{
   width: 450px;
 }
+
+.errors
+{
+  width: 450px;
+}

@@ -1,4 +1,4 @@
-.table-hover > tr hover
+.table-hover > tr:hover
  {
    background-color: darksalmon;
  }

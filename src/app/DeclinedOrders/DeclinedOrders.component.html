@@ -1,31 +1,36 @@
 <div class="container">
-    <h1 class="header"><span class="fa fa-coffee"></span>COFFEE DRINKS</h1>
+    <h1 class="header"><span class="fa fa-coffee"></span> COFFEE DRINKS</h1>
     <br>
     <div class="alert alert-dark" role="alert">
-     <h1>DECLINED ORDERS:
-
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button [routerLink]="['/completedorders']" type="button" class="btn btn-warning">Completed Orders</button>
-            <button [routerLink]="['/declinedorders']" type="button" class="btn btn-danger">Declined Orders</button>
-            <button [routerLink]="['/kitchen']" type="button" class="btn btn-dark">New Orders</button>
-          </div>
+     <h1><div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" [routerLink]="['/completedorders']" id="option1" autocomplete="off" checked> Completed Orders
+        </label>
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options" [routerLink]="['/declinedorders']" id="option2" autocomplete="off"> Declined Orders
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options"  [routerLink]="['/kitchen']" id="option3" autocomplete="off"> New Orders
+        </label>
+        <label class="btn btn-secondary ">
+            <input type="radio" name="options"  [routerLink]="['/addusers']" id="option3" autocomplete="off"> New Users
+          </label>
+      </div>
         </h1>
       </div>
 
     <table class="table table-hover">
         <thead class="thead-light">
           <tr >
-            <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Items</th>
+            <th scope="col">Room</th>
             <th scope="col">Date</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let order of orders | async">
-            <th scope="row"></th>
             <td>{{ order.data.name}}</td>
-            <td>{{ order.data.item}}</td>
+            <td>{{ order.data.room}}</td>
             <td>{{ order.data.date | date: "medium" }}</td>
           </tr>
         </tbody>

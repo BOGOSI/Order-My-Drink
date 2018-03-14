@@ -1,6 +1,23 @@
 <div class="container">
     <h1 class="header"><span class="fa fa-coffee"></span> COFFEE DRINKS</h1>
     <br>
+    <div class="alert alert-dark" role="alert">
+     <h1><div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" [routerLink]="['/completedorders']" id="option1" autocomplete="off" checked> Completed Orders
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" [routerLink]="['/declinedorders']" id="option2" autocomplete="off"> Declined Orders
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options"  [routerLink]="['/kitchen']" id="option3" autocomplete="off"> New Orders
+        </label>
+        <label class="btn btn-secondary  active">
+            <input type="radio" name="options"  [routerLink]="['/addusers']" id="option3" autocomplete="off"> New Users
+          </label>
+      </div>
+        </h1>
+      </div>
   <div>
     <h1>Add New Employee:</h1>
   </div>
@@ -9,36 +26,30 @@
     <div class="form-group">
       <div class="col-sm-12">
         <label class="control-label">Employee</label>
-        <input type="text" id="user" #name name="name" class="form-control">
-
+        <input type="text" id="user" pattern="[A-Za-z]{1,20}" #name class="form-control" required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-12">
         <label class="control-label">Email</label>
-        <input type="email" id="email" #email name="email" class="form-control">
+        <input type="email" id="email" #email class="form-control" required>
       </div>
     </div>
-
-    <button type="submit" (click)="AddUser(name.value,email.value)" class="btn btn-primary" [disabled]="">
-      Add User
-    </button>
-
+    <input [disabled]="!name.pattern" type="submit" (click)="AddUser(name.value,email.value)" class="btn btn-primary" value="Add User">
   </form>
   <br/>
   <h1>Add New Room:</h1>
-  <form  class="form-horizontal" >
+  <form  class="form-horizontal" #Room="ngForm">
       <div class="form-group">
         <div class="col-sm-12">
           <label class="control-label">Room / Office</label>
-          <input type="text" id="user" #room name="room" class="form-control">
+          <input type="text" id="user" #room pattern="[A-Za-z]{3,10}" class="form-control" required>
 
         </div>
       </div>
-      <button [disabled]="" type="submit" (click)="AddRoom(room.value)" class="btn btn-primary">
+      <button [disabled]=" Room.invalid " type="submit" (click)="AddRoom(room.value)" class="btn btn-primary" required>
         Add Room
       </button>
-
     </form>
 </div>
 

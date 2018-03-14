@@ -2,14 +2,20 @@
     <h1 class="header">COFFEE DRINKS</h1>
     <br>
     <div class="alert alert-dark" role="alert">
-     <h1>Accepted Orders:
-
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button [routerLink]="['/acceptedorders']" type="button" class="btn btn-success">Accepted Orders</button>
-            <button [routerLink]="['/completedorders']" type="button" class="btn btn-warning">Completed Orders</button>
-            <button [routerLink]="['/declinedorders']" type="button" class="btn btn-danger">Declined Orders</button>
-            <button [routerLink]="['/kitchen']" type="button" class="btn btn-dark">New Orders</button>
-          </div>
+     <h1><div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options" [routerLink]="['/completedorders']" id="option1" autocomplete="off" checked> Completed Orders
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" [routerLink]="['/declinedorders']" id="option2" autocomplete="off"> Declined Orders
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options"  [routerLink]="['/kitchen']" id="option3" autocomplete="off"> New Orders
+        </label>
+        <label class="btn btn-secondary ">
+            <input type="radio" name="options"  [routerLink]="['/addusers']" id="option3" autocomplete="off"> New Users
+          </label>
+      </div>
         </h1>
       </div>
 
