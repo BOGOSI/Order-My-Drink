@@ -1,22 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { User} from '../models/user';
-import { Order} from '../models/order';
+import { User } from '../models/user';
+import { Order } from '../models/order';
 import { Room } from '../models/room';
 
 import { RouterModule } from '@angular/router';
 import { StatusService } from '../services/status.service';
 
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import { Observable} from 'rxjs/Observable';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
 @Component({
   selector: 'app-order',
-  templateUrl: './Order.component.html',
-  styleUrls: ['./Order.component.css'],
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css'],
 })
 
 export class OrderComponent implements OnInit {
@@ -26,14 +27,19 @@ export class OrderComponent implements OnInit {
   coffeeq = 0;
   waterq = 0;
 
-  date = new Date() ;
+  date = new Date();
+  orderForm: FormGroup;
 
   userCol: AngularFirestoreCollection<User>;
   users: Observable<any>;
   roomCol: AngularFirestoreCollection<Room>;
   rooms: Observable<any>;
 
-  constructor( public af: AngularFirestore, public st: StatusService, private route: Router) {
+  constructor(
+    public af: AngularFirestore,
+    public st: StatusService,
+    private formBuilder: FormBuilder,
+    private route: Router) {
 
   }
 
@@ -42,6 +48,17 @@ export class OrderComponent implements OnInit {
     this.roomCol = this.af.collection('rooms');
     this.getUser();
     this.getRoom();
+    this.createForm();
+  }
+
+  createForm() {
+    this.orderForm = this.formBuilder.group({
+      user: ['', []],
+      q: [0, []],
+      q2: [0, []],
+      q3: [0, []],
+      room: ['', []]
+    });
   }
 
   UserMail(user: string, email: string) {
@@ -73,35 +90,39 @@ export class OrderComponent implements OnInit {
           return { id, data };
         });
       });
- }
-
-  MakeOrder( user: String, q: number, q2: number, q3: number, room: String ) {
-
-    this.af.collection('orders').add(
-      {
-        'name': user,
-        'room': room,
-        'item': 'Tea',
-        'item2': 'Coffee',
-        'item3': 'Water',
-        'quantity': q,
-        'quantity2': q2,
-        'quantity3': q3,
-        'status': 'Pending',
-        'date': this.date
-        }).then(docRef => {
-          this.route.navigate(['/status', docRef.id]);
-        });
   }
 
-  decreaseT(event) {this.teaq = this.teaq - 1; }
+  MakeOrder() {
 
-  increaseT(event) {this.teaq = this.teaq + 1; }
+    const values = this.orderForm.value;
 
-  decreaseC(event) {this.coffeeq = this.coffeeq - 1; }
-  increaseC(event) {this.coffeeq = this.coffeeq + 1; }
+    // this.af.collection('orders').add(
+    //   {
+    //     'name': values.user,
+    //     'room': values.room,
+    //     'item': 'Tea',
+    //     'item2': 'Coffee',
+    //     'item3': 'Water',
+    //     'quantity': values.q,
+    //     'quantity2': values.q2,
+    //     'quantity3': values.q3,
+    //     'status': 'Pending',
+    //     'date': this.date
+    //     }).then(docRef => {
+    //       this.route.navigate(['/status', docRef.id]);
+    //     });
+  }
 
-  decreaseW(event) {this.waterq = this.waterq - 1; }
-  increaseW(event) {this.waterq = this.waterq + 1; }
+  decreaseT(event) { this.teaq = this.teaq - 1; }
+
+  increaseT(event) {
+    this.teaq = this.teaq + 1;
+  }
+
+  decreaseC(event) { this.coffeeq = this.coffeeq - 1; }
+  increaseC(event) { this.coffeeq = this.coffeeq + 1; }
+
+  decreaseW(event) { this.waterq = this.waterq - 1; }
+  increaseW(event) { this.waterq = this.waterq + 1; }
 
 }
