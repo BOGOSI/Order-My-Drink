@@ -11,7 +11,6 @@ export class AddUsersComponent implements OnInit {
 
   userForm: FormGroup;
   roomForm: FormGroup;
-
     constructor(
       public af: AngularFirestore,
       private formBuilder: FormBuilder,
