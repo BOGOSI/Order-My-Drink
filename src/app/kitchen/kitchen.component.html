@@ -112,7 +112,7 @@
               Date:&nbsp;{{ (OrderStatus| async)?.date| date: "medium" }}<br/>
             </th>
             <td>
-              <br/><button (click)="CompleteOrder(OrderID)">Complete Order</button><br/>
+              <br/><button (click)="CompleteOrder(OrderID)" class="btn btn-success">Complete Order</button><br/>
           </tr>
           </tbody>
       </table>
