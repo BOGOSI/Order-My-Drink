@@ -59,7 +59,7 @@
             <br/>
 
             <div class="form-group">
-                <button [disabled]="!orderForm.valid" (click)="MakeOrder()" class="btn btn-success Order">MAKE ORDER</button>
+                <button [disabled]=" !orderForm.dirty" (click)="MakeOrder()" class="btn btn-success Order">MAKE ORDER</button>
             </div>
 
         </form>
