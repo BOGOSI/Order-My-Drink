@@ -104,7 +104,7 @@
         <tbody *ngIf="OrderStatus">
           <tr class="order" >
             <th scope="row">
-              Name: &nbsp;{{ (OrderDetails | async)?.name }} <br/>
+              Name: &nbsp;{{ (OrderStatus | async)?.name }} <br/>
               Room:&nbsp;{{ (OrderStatus | async)?.room }}<br/>
               Tea:&nbsp;{{ (OrderStatus | async)?.quantity }}<br/>
               Coffee:&nbsp;{{ (OrderStatus | async)?.quantity2}}<br/>
