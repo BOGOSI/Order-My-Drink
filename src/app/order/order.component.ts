@@ -61,10 +61,6 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  UserMail(user: string, email: string) {
-    email = user + '@is.com';
-    console.log(email);
-  }
 
   getUser() {
     this.users = this.userCol.snapshotChanges()
@@ -77,9 +73,6 @@ export class OrderComponent implements OnInit {
       });
   }
 
-  UserId() {
-    console.log('Hi');
-  }
 
   getRoom() {
     this.rooms = this.roomCol.snapshotChanges()
@@ -93,9 +86,7 @@ export class OrderComponent implements OnInit {
   }
 
   MakeOrder() {
-
     const values = this.orderForm.value;
-
     // this.af.collection('orders').add(
     //   {
     //     'name': values.user,
@@ -129,10 +120,35 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  decreaseC(event) { this.coffeeq = this.coffeeq - 1; }
-  increaseC(event) { this.coffeeq = this.coffeeq + 1; }
+  decreaseC(event) {
+    this.coffeeq = this.coffeeq - 1;
+    const control = this.orderForm.controls.q2 as FormControl;
+    this.orderForm.patchValue({
+      q2: this.coffeeq
+    });
+   }
 
-  decreaseW(event) { this.waterq = this.waterq - 1; }
-  increaseW(event) { this.waterq = this.waterq + 1; }
+  increaseC(event) {
+    this.coffeeq = this.coffeeq + 1;
+    const control = this.orderForm.controls.q2 as FormControl;
+    this.orderForm.patchValue({
+      q2: this.coffeeq
+    });
+   }
+
+  decreaseW(event) {
+    this.waterq = this.waterq - 1;
+    const control = this.orderForm.controls.q3 as FormControl;
+    this.orderForm.patchValue({
+      q3: this.waterq
+    });
+   }
+  increaseW(event) {
+    this.waterq = this.waterq + 1;
+    const control = this.orderForm.controls.q3 as FormControl;
+    this.orderForm.patchValue({
+      q3: this.waterq
+    });
+   }
 
 }

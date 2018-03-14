@@ -16,7 +16,7 @@
             <div class="form-group">
                 <h1>
                     <span class="fa fa-coffee"></span>&nbsp;TEA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button (click)="decreaseT($event)" class="operator minus">
+                    <button [disabled]="teaq<=0" (click)="decreaseT($event)" class="operator minus">
                         <span class="fa fa-minus"></span>
                     </button>&nbsp;
                     <input type="text" class="quantity" [value]="teaq" formControlName="q" />&nbsp;
@@ -29,10 +29,10 @@
             <div class="form-group">
                 <h1>
                     <span class="fa fa-coffee"></span>&nbsp;COFFEE
-                    <button (click)="decreaseC($event)" class="operator minus">
+                    <button [disabled]="coffeeq <= 0" (click)="decreaseC($event)" class="operator minus">
                         <span class="fa fa-minus"></span>
                     </button>&nbsp;
-                    <input formControlName="q2" type="text" class="quantity" required maxlength="2" />&nbsp;
+                    <input formControlName="q2" type="text" class="quantity" />&nbsp;
                     <button (click)="increaseC($event)" class="operator plus">
                         <span class="fa fa-plus"></span>
                     </button>
@@ -42,10 +42,10 @@
             <div class="form-group">
                 <h1>
                     <span class="fa fa-tint"></span>&nbsp;WATER &nbsp;&nbsp;&nbsp;
-                    <button (click)="decreaseW($event)" class="operator minus">
+                    <button [disabled]="waterq <=0 " (click)="decreaseW($event)" class="operator minus">
                         <span class="fa fa-minus"></span>
                     </button>&nbsp;
-                    <input formArrayName="q3" type="text" class="quantity" value="{{waterq}}" />&nbsp;
+                    <input formControlName="q3" type="text" class="quantity" value="{{waterq}}" />&nbsp;
                     <button (click)="increaseW($event)" class="operator plus">
                         <span class="fa fa-plus"></span>
                     </button>
@@ -68,6 +68,6 @@
         <p id="footer">All Rights Reserved.</p>
     </div>
     <pre>
-        {{ orderForm.value | json }}   
+        {{ orderForm.value | json }}
     </pre>
 </div>
