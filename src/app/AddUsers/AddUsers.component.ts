@@ -11,21 +11,30 @@ export class AddUsersComponent implements OnInit {
 
   userForm: FormGroup;
   roomForm: FormGroup;
+
+  roomSuccess: string;
+  userSuccess: string;
+
     constructor(
       public af: AngularFirestore,
       private formBuilder: FormBuilder,
     ) { }
 
     ngOnInit() {
-      this.createForm();
+      this.createUserForm();
+      this.createRoomForm();
+      this.roomSuccess = '';
+      this.userSuccess = '';
     }
 
-    createForm() {
+    createUserForm() {
       this.userForm = this.formBuilder.group({
         user: ['', []],
         email: ['', []]
       });
+    }
 
+    createRoomForm() {
       this.roomForm = this.formBuilder.group({
         newroom: ['', []]
       });
@@ -38,7 +47,8 @@ export class AddUsersComponent implements OnInit {
           'name': values.user,
           'email': values.email
           });
-      console.log(values.user, ' : ', values.email);
+      this.userSuccess = 'Success';
+      this.createUserForm();
     }
 
     AddRoom() {
@@ -48,7 +58,13 @@ export class AddUsersComponent implements OnInit {
           'room': values.newroom
         }
       );
-    console.log(values.newroom);
+      this.roomSuccess = 'Success';
+      this.createRoomForm();
+    }
+
+    refresh() {
+      this.roomSuccess = '';
+      this.userSuccess = '';
     }
 
 }

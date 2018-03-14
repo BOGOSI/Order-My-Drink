@@ -24,6 +24,9 @@
   <form class="form-horizontal" [formGroup]="userForm" novalidate>
     <div class="form-group">
       <div class="col-sm-12">
+          <div (click)="refresh()" *ngIf="userSuccess == 'Success' " class="errors alert alert-success" role="alert">
+              <strong>Well done!</strong> You successfully added your employee.
+            </div>
         <label class="control-label">Employee</label>
         <input type="text" id="user" formControlName="user" class="form-control" >
       </div>
@@ -48,7 +51,10 @@
       <div class="form-group">
         <div class="col-sm-12">
           <label class="control-label">Room / Office</label>
-          <input type="text" id="newroom" formControlName="newroom" class="form-control" required>
+          <input type="text" id="newroom" (click)="refresh()" formControlName="newroom" class="form-control" required>
+          <div (click)="refresh()" *ngIf="roomSuccess == 'Success' " class="errors alert alert-success" role="alert">
+            <strong >Well done!</strong> You successfully added your room.
+          </div>
         </div>
       </div>
       <div class="form-group">
