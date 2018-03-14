@@ -87,21 +87,21 @@ export class OrderComponent implements OnInit {
 
   MakeOrder() {
     const values = this.orderForm.value;
-    // this.af.collection('orders').add(
-    //   {
-    //     'name': values.user,
-    //     'room': values.room,
-    //     'item': 'Tea',
-    //     'item2': 'Coffee',
-    //     'item3': 'Water',
-    //     'quantity': values.q,
-    //     'quantity2': values.q2,
-    //     'quantity3': values.q3,
-    //     'status': 'Pending',
-    //     'date': this.date
-    //     }).then(docRef => {
-    //       this.route.navigate(['/status', docRef.id]);
-    //     });
+    this.af.collection('orders').add(
+      {
+        'name': values.user,
+        'room': values.room,
+        'item': 'Tea',
+        'item2': 'Coffee',
+        'item3': 'Water',
+        'quantity': values.q,
+        'quantity2': values.q2,
+        'quantity3': values.q3,
+        'status': 'Pending',
+        'date': this.date
+        }).then(docRef => {
+          this.route.navigate(['/status', docRef.id]);
+        });
   }
 
   decreaseT(event) {

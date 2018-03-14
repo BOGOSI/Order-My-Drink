@@ -21,42 +21,41 @@
   <div>
     <h1>Add New Employee:</h1>
   </div>
-  <form class="form-horizontal" >
-
+  <form class="form-horizontal" [formGroup]="userForm" novalidate>
     <div class="form-group">
       <div class="col-sm-12">
         <label class="control-label">Employee</label>
-        <input type="text" id="user" pattern="[A-Za-z]{1,20}" #name class="form-control" required>
+        <input type="email" id="user" formControlName="user" class="form-control">
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-12">
         <label class="control-label">Email</label>
-        <input type="email" id="email" #email class="form-control" required>
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="example@example.com" required>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-sm-12">
-          <button type="submit" [disabled]="!name.pattern" type="submit" (click)="AddUser(name.value,email.value)" class="btn btn-primary">Add a user</button>
+          <button [disabled]="!userForm.valid" type="submit" type="submit" (click)="AddUser()" class="btn btn-primary">Add a user</button>
       </div>
     </div>
   </form>
+
   <br/>
   <h1>Add New Room:</h1>
-  <form  class="form-horizontal" #Room="ngForm">
+  <form  class="form-horizontal" [formGroup]="roomForm" novalidate>
       <div class="form-group">
         <div class="col-sm-12">
           <label class="control-label">Room / Office</label>
-          <input type="text" id="user" #room pattern="[A-Za-z]{3,10}" class="form-control" required>
-
+          <input type="text" id="newroom" formControlName="newroom" class="form-control" required>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-12">
-          <button [disabled]=" Room.invalid " type="submit" (click)="AddRoom(room.value)" class="btn btn-primary" required>
-        Add a room
-      </button>
+          <button [disabled]="!roomForm.valid " type="submit" (click)="AddRoom()" class="btn btn-primary" required>
+             Add a room
+          </button>
         </div>
       </div>
 

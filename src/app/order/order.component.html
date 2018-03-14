@@ -7,7 +7,7 @@
     <div class="body">
         <form class="myOrder" [formGroup]="orderForm" novalidate>
             <div class="form-group" name="ORDER">
-                <select ng-model="user" class="user form-control" formControlName="user">
+                <select class="user form-control" formControlName="user">
                     <option value="" disabled selected hidden>Select your name...</option>
                     <option *ngFor="let user of users | async" [value]="user.data.name">{{user.data.name}}</option>
                 </select>

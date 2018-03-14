@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validator } from '@angular/forms';
 import { User } from '../models/user';
 import { AngularFirestore } from 'angularfire2/firestore' ;
 @Component({
@@ -8,29 +9,47 @@ import { AngularFirestore } from 'angularfire2/firestore' ;
 })
 export class AddUsersComponent implements OnInit {
 
-    constructor(public af: AngularFirestore) { }
+  userForm: FormGroup;
+  roomForm: FormGroup;
 
-    ngOnInit( ) {
+    constructor(
+      public af: AngularFirestore,
+      private formBuilder: FormBuilder,
+    ) { }
 
+    ngOnInit() {
+      this.createForm();
     }
 
-    AddUser(name: string, email: string) {
+    createForm() {
+      this.userForm = this.formBuilder.group({
+        user: ['', []],
+        email: ['', []]
+      });
+
+      this.roomForm = this.formBuilder.group({
+        newroom: ['', []]
+      });
+    }
+
+    AddUser() {
+      const values = this.userForm.value;
       this.af.collection('users').add(
         {
-          'name': name,
-          'email': email
+          'name': values.user,
+          'email': values.email
           });
-          name = '';
-          email = '';
+      console.log(values.user, ' : ', values.email);
     }
 
-    AddRoom(room: string) {
+    AddRoom() {
+      const values = this.roomForm.value;
       this.af.collection('rooms').add(
         {
-          'room': room
+          'room': values.newroom
         }
       );
-      console.log('Room: ', room, 'Registered.');
+    console.log(values.newroom);
     }
 
 }
