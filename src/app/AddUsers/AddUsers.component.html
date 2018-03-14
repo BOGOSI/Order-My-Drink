@@ -35,7 +35,12 @@
         <input type="email" id="email" #email class="form-control" required>
       </div>
     </div>
-    <input [disabled]="!name.pattern" type="submit" (click)="AddUser(name.value,email.value)" class="btn btn-primary" value="Add User">
+
+    <div class="form-group">
+      <div class="col-sm-12">
+          <button type="submit" [disabled]="!name.pattern" type="submit" (click)="AddUser(name.value,email.value)" class="btn btn-primary">Add a user</button>
+      </div>
+    </div>
   </form>
   <br/>
   <h1>Add New Room:</h1>
@@ -47,9 +52,14 @@
 
         </div>
       </div>
-      <button [disabled]=" Room.invalid " type="submit" (click)="AddRoom(room.value)" class="btn btn-primary" required>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button [disabled]=" Room.invalid " type="submit" (click)="AddRoom(room.value)" class="btn btn-primary" required>
         Add Room
       </button>
+        </div>
+      </div>
+
     </form>
 </div>
 
