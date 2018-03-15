@@ -4,14 +4,12 @@
   </div>
   <div class="body"  onload="hideLoader()">
     <div class="status">
-      <h1>your order is <span *ngIf="orderStatus">{{ ( orderStatus | async)?.status }}</span> ...</h1>
+      <h1>Order Status: <span *ngIf="orderStatus">{{ ( orderStatus | async)?.status }}</span></h1>
       <br />
       <br/>
       <button [routerLink]="['/order']" *ngIf="( orderStatus | async)?.status =='Completed'" class="btn btn-success">Main Menu</button>
       <button [routerLink]="['/order']" *ngIf="( orderStatus | async)?.status =='Declined'" class="btn btn-danger">Main Menu</button>
     </div>
   </div>
-  <div class="footer" align="center">
-    <p id="footer">All Rights Reserved.</p>
-  </div>
+
 </div>

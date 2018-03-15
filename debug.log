@@ -1,0 +1,6 @@
+[0314/203856.027:ERROR:scoped_process_suspend.cc(31)] NtSuspendProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0314/203856.033:ERROR:process_info.cc(350)] VirtualQueryEx: Access is denied. (0x5)
+[0314/203856.033:ERROR:process_info.cc(571)] ReadMemoryInfo failed
+[0314/203856.037:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0314/203856.037:ERROR:exception_snapshot_win.cc(88)] thread ID 5080 not found in process
+[0314/203856.037:WARNING:crash_report_exception_handler.cc(62)] ProcessSnapshotWin::Initialize failed

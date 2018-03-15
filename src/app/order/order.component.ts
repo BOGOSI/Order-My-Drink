@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validator } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { User } from '../models/user';
@@ -53,12 +53,32 @@ export class OrderComponent implements OnInit {
 
   createForm() {
     this.orderForm = this.formBuilder.group({
-      user: ['', []],
+      user: ['', [Validators.required]],
       q: [0, []],
       q2: [0, []],
       q3: [0, []],
-      room: ['', []]
+      room: ['', [Validators.required]]
     });
+  }
+
+  formValid(): boolean {
+    const userControl = this.orderForm.controls.user as FormControl;
+    const userControlValid: boolean = userControl.valid;
+
+    const roomControl = this.orderForm.controls.room as FormControl;
+    const roomControlValid: boolean = roomControl.valid;
+
+    const quantityControl = this.orderForm.controls.q2 as FormControl;
+    const q = this.orderForm.controls.q as FormControl;
+    const q3 = this.orderForm.controls.q3 as FormControl;
+
+    // const quantityControlValid: boolean = quantityControl.dirty;
+    // const qValid: boolean = q.dirty;
+    // const q3Valid: boolean = q3.dirty;
+
+    // const quantitiesValid = (quantityControlValid || qValid || q3Valid);
+
+     return (userControlValid && roomControlValid);
   }
 
 
@@ -87,6 +107,7 @@ export class OrderComponent implements OnInit {
 
   MakeOrder() {
     const values = this.orderForm.value;
+
     this.af.collection('orders').add(
       {
         'name': values.user,
