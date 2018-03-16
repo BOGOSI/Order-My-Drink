@@ -31,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 1 ? 'white' : '#0080007a'">
+    <tr class="order" (click)="getOrder(order.id)" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 0 ? '#0080007a' : 'white'">
       <td>{{ order.data.name}}</td>
       <td>{{ order.data.room}}</td>
       <td>{{ order.data.date | date: "medium"}}<br/></td>
@@ -48,7 +48,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 1 ? 'white' : '#0080007a'" >
+      <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 0 ? '#0080007a' : 'white'" >
           <ng-container>
               <td>{{ order.data.name}}</td>
               <td>{{ order.data.room}}</td>
@@ -68,7 +68,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 1 ? 'white' : '#0080007a'">
+          <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 0 ? '#0080007a' : 'white'">
             <td>{{ order.data.name}}</td>
             <td>{{ order.data.room}}</td>
             <td>{{ order.data.date | date: "medium"}}<br/></td>
