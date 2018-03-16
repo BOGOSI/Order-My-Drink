@@ -31,11 +31,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr (click)="getOrder(order.id)" class="order" *ngFor="let order of orders | async">
+    <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 1 ? 'white' : '#0080007a'">
       <td>{{ order.data.name}}</td>
       <td>{{ order.data.room}}</td>
-      <td>{{ order.data.date | date: "medium"}}<br/>
-        </td>
+      <td>{{ order.data.date | date: "medium"}}<br/></td>
     </tr>
     </tbody>
   </table>
@@ -49,10 +48,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="order" *ngFor="let order of orders | async">
-        <td>{{ order.data.name}}</td>
-        <td>{{ order.data.room}}</td>
-        <td>{{ order.data.date | date: "medium"}}<br/></td>
+      <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 1 ? 'white' : '#0080007a'" >
+          <ng-container>
+              <td>{{ order.data.name}}</td>
+              <td>{{ order.data.room}}</td>
+              <td>{{ order.data.date | date: "medium"}}<br/>
+              </td>
+            </ng-container>
       </tr>
       </tbody>
     </table>
@@ -66,7 +68,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="order" *ngFor="let order of orders | async">
+          <tr class="order" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 1 ? 'white' : '#0080007a'">
             <td>{{ order.data.name}}</td>
             <td>{{ order.data.room}}</td>
             <td>{{ order.data.date | date: "medium"}}<br/></td>
@@ -84,33 +86,45 @@
           <th scope="col">&nbsp;&nbsp;</th>
         </tr>
       </thead>
-        <tbody *ngIf="OrderDetails">
+      <tbody *ngIf="OrderDetails" style = "background-color:#0080007a">
         <tr class="order" >
-          <th scope="row">
-
-            Name: &nbsp;{{ (OrderDetails | async)?.name }} <br/>
-            Room:&nbsp;{{ (OrderDetails | async)?.room }}<br/>
-            Tea:&nbsp;{{ (OrderDetails | async)?.quantity }}<br/>
-            Coffee:&nbsp;{{ (OrderDetails | async)?.quantity2 }}<br/>
-            Water:&nbsp;{{ (OrderDetails | async)?.quantity3 }}<br/>
-            Date:&nbsp;{{ (OrderDetails | async)?.date| date: "medium" }}<br/>
-          </th>
+          <td scope="row">
+            Name:  <br/>
+            Room:<br/>
+            Tea:<br/>
+            Coffee:<br/>
+            Water:<br/>
+          </td>
+          <td>
+            <span style="color:white">{{ (OrderDetails | async)?.name }}</span><br>
+            <span style="color:white">{{ (OrderDetails | async)?.room }}</span><br>
+            <span style="color:white">{{ (OrderDetails | async)?.quantity }}</span><br>
+            <span style="color:white">{{ (OrderDetails | async)?.quantity2 }}</span><br>
+            <span style="color:white">{{ (OrderDetails | async)?.quantity3 }}</span>
+          </td>
           <td>
             <button (click)="AcceptOrder(OrderID)" class="btn btn-success">Accept Order</button><br/>
-            <br/><button (click)="DeclinedOrder(OrderID)" class="btn btn-danger">Decline Order</button></td>
+            <br/><button (click)="DeclinedOrder(OrderID)" class="btn btn-danger">Decline Order</button>
+          </td>
         </tr>
         </tbody>
 
-        <tbody *ngIf="OrderStatus">
+        <tbody *ngIf="OrderStatus" style = "background-color:#0080007a">
           <tr class="order" >
-            <th scope="row">
-              Name: &nbsp;{{ (OrderStatus | async)?.name }} <br/>
-              Room:&nbsp;{{ (OrderStatus | async)?.room }}<br/>
-              Tea:&nbsp;{{ (OrderStatus | async)?.quantity }}<br/>
-              Coffee:&nbsp;{{ (OrderStatus | async)?.quantity2}}<br/>
-              Water:&nbsp;{{ (OrderStatus | async)?.quantity3 }}<br/>
-              Date:&nbsp;{{ (OrderStatus| async)?.date| date: "medium" }}<br/>
-            </th>
+            <td scope="row">
+              Name: &nbsp; <br/>
+              Room:&nbsp;<br/>
+              Tea:&nbsp;<br/>
+              Coffee:&nbsp;<br/>
+              Water:&nbsp;<br/>
+            </td>
+            <td>
+              <span style="color:white">{{ (OrderStatus | async)?.name }}</span><br>
+              <span style="color:white">{{ (OrderStatus | async)?.room }}</span><br>
+              <span style="color:white">{{ (OrderStatus | async)?.quantity }}</span><br>
+              <span style="color:white">{{ (OrderStatus | async)?.quantity2}}</span><br>
+              <span style="color:white">{{ (OrderStatus | async)?.quantity3 }}</span><br>
+            </td>
             <td>
               <br/><button (click)="CompleteOrder(OrderID)" class="btn btn-success">Complete Order</button><br/>
           </tr>

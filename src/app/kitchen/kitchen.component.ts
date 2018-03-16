@@ -22,6 +22,7 @@ export class KitchenComponent implements OnInit {
 
 
   OrderID: string;
+  activeOrder: number;
 
   constructor(private afs: AngularFirestore, public Sservice: StatusService) { }
 
@@ -43,7 +44,11 @@ export class KitchenComponent implements OnInit {
       });
   }
 
-  getOrder(OrderId) {
+  getOrder(OrderId, index: number = null) {
+    if (index) {
+      this.activeOrder = index;
+    }
+
     this.getOrders();
     this.OrderDoc = this.afs.doc('orders/' + OrderId);
     this.OrderDetails = this.OrderDoc.valueChanges();
