@@ -1,5 +1,5 @@
 <div class="container">
-<h1 class="header"><span class="fa fa-coffee"></span> COFFEE DRINKS</h1>
+<h1 class="header"><span class="fa fa-coffee"></span> ORDER MY DRINK</h1>
 <br>
 <div class="alert alert-dark" role="alert">
  <h1>
@@ -20,9 +20,9 @@
     </h1>
 </div>
 
-<div class="row">
-  <div class="col-md-5">
-    <table [hidden]="OrderDetails || OrderStatus" class="active table table-hover">
+<div class="tables row">
+  <div class="col-md-6 ">
+    <table  [hidden]="OrderDetails || OrderStatus" class="tables active table table-hover">
   <thead class="thead-light ">
     <tr>
       <th scope="col">Name</th>
@@ -31,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="order" (click)="getOrder(order.id)" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 0 ? '#0080007a' : 'white'">
+    <tr class="order " (click)="getOrder(order.id)" *ngFor="let order of (orders | async); let i = index;" [style.background-color]=" i == 0 ? '#0080007a' : 'white'">
       <td>{{ order.data.name}}</td>
       <td>{{ order.data.room}}</td>
       <td>{{ order.data.date | date: "medium"}}<br/></td>
@@ -39,7 +39,7 @@
     </tbody>
   </table>
 
-  <table [hidden]="OrderStatus" *ngIf="OrderDetails" class="active table">
+  <table [hidden]="OrderStatus" *ngIf="OrderDetails" class="tables active table">
     <thead class="thead-light ">
       <tr>
         <th scope="col">Name</th>
@@ -59,7 +59,7 @@
       </tbody>
     </table>
 
-    <table *ngIf="OrderStatus" class="active table">
+    <table *ngIf="OrderStatus" class="tables active table">
         <thead class="thead-light ">
           <tr>
             <th scope="col">Name</th>
@@ -76,7 +76,7 @@
           </tbody>
         </table>
   </div>
-  <div class="col-md-7">
+  <div class="tables col-md-6">
    <div class="order">
 
     <table class="active table">
